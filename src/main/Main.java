@@ -2,7 +2,9 @@ package main;
 import java.io.*;
 
 import eroi.Knight;
+import eroi.Pyromancer;
 import eroi.Rogue;
+import field.Field;
 
 
 public class Main {
@@ -101,12 +103,18 @@ public class Main {
 		Knight k1 = new Knight();
 		Knight k2 = new Knight();
 		
-		k1.execute(k2);
-		System.out.println("Knight 1 has "+ k1.HP + " Knight 2 has "+k2.HP);
+		k1.execute(k2, Field.DESERT);
+		k1.slam(k2, Field.DESERT);
 		
-		k1.execute(k2);
-		System.out.println("Knight 1 has "+ k1.HP + " Knight 2 has "+k2.HP);
-	
+		System.out.println("k1 = "+k1.HP );
+		System.out.println("k2 = "+k2.HP);
+		
+		k2.execute(k1, Field.DESERT);
+		k2.slam(k1, Field.DESERT);
+		
+		System.out.println("k1 = "+k1.HP );
+		System.out.println("k2 = "+k2.HP);
+			
 	}
 	
 }

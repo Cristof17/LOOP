@@ -5,6 +5,7 @@ public class Hero {
 	public int level;
 	public int XP;
 	public int HP;
+	public int maxHP;
 	
 	public int increaseHP(int value ){
 		return 0;

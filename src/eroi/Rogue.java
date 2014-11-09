@@ -17,6 +17,7 @@ public class Rogue extends Hero{
 	public Rogue(){
 		this.XP = 0;
 		this.HP = 600;
+		this.maxHP = 600;
 		
 	}
 	

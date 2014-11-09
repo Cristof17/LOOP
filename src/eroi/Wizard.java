@@ -17,6 +17,7 @@ public class Wizard extends Hero {
 	public Wizard(){
 		this.XP = 0;
 		this.HP = 400;
+		this.maxHP = 400;
 		
 	}
 	
