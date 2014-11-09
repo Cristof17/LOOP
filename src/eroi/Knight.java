@@ -25,19 +25,15 @@ public final class Knight extends Hero{
 	
 	private static final int FIELD_DMG_INCREASE = 15;
 	
-	private static final int ONE_PERCENT = 1 ;
 	
 	private boolean has_field_advantage = false;
 	
-	private int instant_kill_limit = 20;
-	private static final int INSTANT_KILL_LIMIT_MAX = 40 ;
 	
 	
 	public Knight(){
 		this.XP = 0;
 		this.HP = 900;
 		this.maxHP = 900;
-		this.instant_kill_limit = 20 ;
 		
 	}
 	
@@ -214,6 +210,32 @@ public final class Knight extends Hero{
 	
 	public void slam(Pyromancer p ,int field){
 		
+		if(isDead())
+			return ;
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			
+			p.decreaseHP(field_increased_dmg +
+					Percent.getPercent(PYROMANCER_SLAM_DMG_INCREASE, field_increased_dmg)+
+					(level * SLAM_LVL_INCREASE));
+			
+		}
+		
+		else if(!has_field_advantage){
+			
+			
+			p.decreaseHP(SLAM_BASE_DMG +
+					Percent.getPercent(PYROMANCER_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
+					(level * SLAM_LVL_INCREASE));
+			
+		}
+
+		
 	}
 	
 	public void slam(Knight k ,int field){
@@ -260,7 +282,7 @@ public final class Knight extends Hero{
 									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
 			w.decreaseHP(field_increased_dmg +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
+					Percent.getPercent(WIZARD_SLAM_DMG_INCREASE, field_increased_dmg)+
 					(level * SLAM_LVL_INCREASE));
 			
 		}
@@ -269,7 +291,7 @@ public final class Knight extends Hero{
 			
 			
 			w.decreaseHP(SLAM_BASE_DMG +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
+					Percent.getPercent(WIZARD_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
 					(level * SLAM_LVL_INCREASE));
 			
 		}
@@ -289,7 +311,7 @@ public final class Knight extends Hero{
 									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
 			r.decreaseHP(field_increased_dmg +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
+					Percent.getPercent(ROGUE_SLAM_DMG_INCREASE, field_increased_dmg)+
 					(level * SLAM_LVL_INCREASE));
 			
 		}
@@ -298,7 +320,7 @@ public final class Knight extends Hero{
 			
 			
 			r.decreaseHP(SLAM_BASE_DMG +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
+					Percent.getPercent(ROGUE_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
 					(level * SLAM_LVL_INCREASE));
 			
 		}
