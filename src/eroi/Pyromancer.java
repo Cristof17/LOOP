@@ -11,5 +11,13 @@ public class Pyromancer extends Hero{
 	}
 	
 	
+	public void fireblast(Hero h){
+		
+	}
+	
+	public void ignite(Hero h){
+		
+	}
+	
 }
 

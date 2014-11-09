@@ -10,4 +10,14 @@ public class Wizard extends Hero {
 		
 	}
 	
+	
+	public void drain(Hero h){
+		
+	}
+	
+	
+	public void deflect(Hero h){
+		
+	}
+	
 }

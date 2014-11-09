@@ -9,5 +9,13 @@ public final class Knight extends Hero{
 		this.HP = 900;
 		
 	}
+	
+	public void execute(Hero h){
+		
+	}
+	
+	public void slam(Hero h){
+		
+	}
 
 }
