@@ -2,31 +2,32 @@ package eroi;
 
 public class Hero {
 	
-	protected int level;
-	protected int XP;
-	protected int HP;
+	public int level;
+	public int XP;
+	public int HP;
 	
-	protected int increaseHP(int value ){
+	public int increaseHP(int value ){
 		return 0;
 	}
 	
-	protected int decreaseHP(int value){
+	public int decreaseHP(int value){
+		this.HP -= value ;
+		return this.HP;
+	}
+	
+	public int increaseXP(){
 		return 0;
 	}
 	
-	protected int increaseXP(){
+	public int decreaseXP(){
 		return 0;
 	}
 	
-	protected int decreaseXP(){
+	public int increaseLevel(int value){
 		return 0;
 	}
 	
-	protected int increaseLevel(int value){
-		return 0;
-	}
-	
-	protected int decreaseLevel(int value){
+	public int decreaseLevel(int value){
 		return 0;
 		
 	}

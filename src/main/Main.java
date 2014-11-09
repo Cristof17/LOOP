@@ -97,6 +97,15 @@ public class Main {
 			e.printStackTrace();
 		}	
 		
+		
+		Knight k1 = new Knight();
+		Knight k2 = new Knight();
+		
+		k1.execute(k2);
+		System.out.println("Knight 1 has "+ k1.HP + " Knight 2 has "+k2.HP);
+		
+		k1.execute(k2);
+		System.out.println("Knight 1 has "+ k1.HP + " Knight 2 has "+k2.HP);
 	
 	}
 	
