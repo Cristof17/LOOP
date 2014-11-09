@@ -21,12 +21,36 @@ public class Wizard extends Hero {
 	}
 	
 	
-	public void drain(Hero h){
+	public void drain(Pyromancer p){
+		
+	}
+	
+	public void drain(Knight h){
+		
+	}	
+	
+	public void drain(Wizard w){
+		
+	}
+	
+	public void drain(Rogue h){
 		
 	}
 	
 	
-	public void deflect(Hero h){
+	public void deflect(Pyromancer p){
+		
+	}
+
+	public void deflect(Knight k){
+		
+	}
+	
+	public void deflect(Wizard w){
+		
+	}
+	
+	public void deflect(Rogue r){
 		
 	}
 	

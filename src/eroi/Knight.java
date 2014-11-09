@@ -20,12 +20,36 @@ public final class Knight extends Hero{
 		
 	}
 	
-	public void execute(Hero h){
+	public void execute(Pyromancer p){
 		
 	}
 	
-	public void slam(Hero h){
+	public void execute(Knight k){
 		
 	}
 
+	public void execute(Wizard w){
+		
+	}
+
+	public void execute(Rogue r){
+		
+	}
+
+	
+	public void slam(Pyromancer p){
+		
+	}
+	
+	public void slam(Knight k){
+		
+	}
+	
+	public void slam(Wizard w){
+		
+	}
+
+	public void slam(Rogue r){
+		
+	}
 }

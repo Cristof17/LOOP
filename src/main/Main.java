@@ -2,6 +2,9 @@ package main;
 import java.awt.font.NumericShaper;
 import java.io.*;
 
+import eroi.Knight;
+import eroi.Rogue;
+
 
 public class Main {
 	
@@ -93,9 +96,9 @@ public class Main {
 		
 		}catch (IOException e) {
 			e.printStackTrace();
-		}		
-	
+		}	
 		
+	
 	}
 	
 }

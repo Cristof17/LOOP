@@ -22,11 +22,35 @@ public class Pyromancer extends Hero{
 	}
 	
 	
-	public void fireblast(Hero h){
+	public void fireblast(Pyromancer h){
 		
 	}
 	
-	public void ignite(Hero h){
+	public void fireblast(Knight h){
+		
+	}
+	
+	public void fireblast(Wizard h){
+		
+	}
+	
+	public void fireblast(Rogue h){
+		
+	}
+	
+	public void ignite(Pyromancer h){
+		
+	}
+
+	public void ignite(Knight h){
+		
+	}
+	
+	public void ignite(Wizard h){
+		
+	}
+	
+	public void ignite(Rogue h){
 		
 	}
 	
