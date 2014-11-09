@@ -13,6 +13,9 @@ public class Hero {
 	
 	public int decreaseHP(int value){
 		this.HP -= value ;
+		if(this.HP < 0 ){
+			this.HP = 0;
+		}
 		return this.HP;
 	}
 	
@@ -33,6 +36,18 @@ public class Hero {
 		
 	}
 	
+	public boolean isDead(){
+		return HP <= 0 ;
+	}
+	
+	public void wins(Hero enemy){
+		this.HP = maxHP;
+		calculateLevel(enemy);
+	}
+	
+	public void calculateLevel(Hero loser){
+		this.XP = loser.XP + Math.max(0, 200 - (this.level - loser.level ) *40);
+	}
 	
 	
 }

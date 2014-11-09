@@ -98,23 +98,8 @@ public class Main {
 		}catch (IOException e) {
 			e.printStackTrace();
 		}	
+
 		
-		
-		Knight k1 = new Knight();
-		Knight k2 = new Knight();
-		
-		k1.execute(k2, Field.DESERT);
-		k1.slam(k2, Field.DESERT);
-		
-		System.out.println("k1 = "+k1.HP );
-		System.out.println("k2 = "+k2.HP);
-		
-		k2.execute(k1, Field.DESERT);
-		k2.slam(k1, Field.DESERT);
-		
-		System.out.println("k1 = "+k1.HP );
-		System.out.println("k2 = "+k2.HP);
-			
 	}
 	
 }

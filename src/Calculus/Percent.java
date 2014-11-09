@@ -4,7 +4,7 @@ public class Percent {
 
 	public static int getPercent(int percent , int from){
 		float a =  ((float)percent/100)*from ;
-		return (int)a;
+		return Math.round(a);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package eroi;
 
+import javax.naming.LimitExceededException;
+
 import field.Field;
 import Calculus.Percent;
 
@@ -25,9 +27,12 @@ public final class Knight extends Hero{
 	
 	private static final int FIELD_DMG_INCREASE = 15;
 	
+	private static final int ONE_PERCENT = 1 ;
+	
 	private boolean has_field_advantage = false;
 	
-	private int instant_kill_limit;
+	private int instant_kill_limit = 20;
+	private static final int INSTANT_KILL_LIMIT_MAX = 40 ;
 	
 	
 	public Knight(){
@@ -38,39 +43,98 @@ public final class Knight extends Hero{
 		
 	}
 	
-	public void execute(Pyromancer p, int field){
+	
+	public void fightsWith(Knight k , int field){
+		
+		this.execute(k, field);
+		k.execute(this, field);
+		
+		this.slam(k, field);
+		k.slam(this, field);
+	}
+	
+	
+	public void fightsWith(Pyromancer p , int field){
+		this.execute(p, field);
 		
 	}
 	
-	public void execute(Knight k ,int field){
+	public void fightsWith(Wizard k , int field){
+		
+	}
+	
+	public void fightsWith(Rogue k , int field){
+		
+	}
+	
+	
+	
+	
+	public void execute(Pyromancer p, int field){
+		
+		
+		if(canBeKilledInstantly(p)){
+			this.HP = 0 ;
+			return ;
+		}
+		
 		
 		has_field_advantage = checkField(field);
 		
 		if(has_field_advantage){
 			
-			k.decreaseHP(EXECUTE_BASE_DMG +
-					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG)+
-					(level * EXECUTE_LVL_INCREASE)+
-					Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG));
+			int field_increased_dmg = EXECUTE_BASE_DMG +
+								   (level * EXECUTE_LVL_INCREASE)+
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+										   
 		
-		
-			decreaseHP(EXECUTE_BASE_DMG +
-					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
-					(k.level * EXECUTE_LVL_INCREASE)+
-					Percent.getPercent(FIELD_DMG_INCREASE, EXECUTE_BASE_DMG));
+			p.decreaseHP(field_increased_dmg +
+					Percent.getPercent(PYROMANCER_EXECUTE_DMG_INCREASE, field_increased_dmg)+
+					(level * EXECUTE_LVL_INCREASE));
 		
 		}
 		
 		else if(!has_field_advantage){
 			
-			k.decreaseHP(EXECUTE_BASE_DMG +
-					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG)+
+		
+			p.decreaseHP(EXECUTE_BASE_DMG +
+					Percent.getPercent(PYROMANCER_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
 					(level * EXECUTE_LVL_INCREASE));
 		
+		}
 		
-			decreaseHP(EXECUTE_BASE_DMG +
+	}
+	
+	public void execute(Knight k ,int field){
+		
+		
+		if(canBeKilledInstantly(k)){
+			this.HP = 0 ;
+			return ;
+		}
+		
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg = EXECUTE_BASE_DMG +
+								   (level * EXECUTE_LVL_INCREASE)+
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+										   
+		
+			k.decreaseHP(field_increased_dmg +
+					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, field_increased_dmg)+
+					(level * EXECUTE_LVL_INCREASE));
+		
+		}
+		
+		else if(!has_field_advantage){
+			
+		
+			k.decreaseHP(EXECUTE_BASE_DMG +
 					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
-					(k.level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE));
 		
 		}
 		
@@ -78,9 +142,74 @@ public final class Knight extends Hero{
 
 	public void execute(Wizard w ,int field){
 		
+		if(canBeKilledInstantly(w)){
+			this.HP = 0 ;
+			return ;
+		}
+		
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg = EXECUTE_BASE_DMG +
+								   (level * EXECUTE_LVL_INCREASE)+
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+										   
+		
+			w.decreaseHP(field_increased_dmg +
+					Percent.getPercent(WIZARD_EXECUTE_DMG_INCREASE, field_increased_dmg)+
+					(level * EXECUTE_LVL_INCREASE));
+		
+		}
+		
+		else if(!has_field_advantage){
+			
+		
+			w.decreaseHP(EXECUTE_BASE_DMG +
+					Percent.getPercent(WIZARD_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
+					(level * EXECUTE_LVL_INCREASE));
+		
+		}
+
+		
+		
 	}
 
 	public void execute(Rogue r ,int field){
+		
+		if(canBeKilledInstantly(r)){
+			this.HP = 0 ;
+			return ;
+		}
+		
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg = EXECUTE_BASE_DMG +
+								   (level * EXECUTE_LVL_INCREASE)+
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+										   
+		
+			r.decreaseHP(field_increased_dmg +
+					Percent.getPercent(ROGUE_EXECUTE_DMG_INCREASE, field_increased_dmg)+
+					(level * EXECUTE_LVL_INCREASE));
+		
+		}
+		
+		else if(!has_field_advantage){
+			
+		
+			r.decreaseHP(EXECUTE_BASE_DMG +
+					Percent.getPercent(ROGUE_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
+					(level * EXECUTE_LVL_INCREASE));
+		
+		}
+
+		
+		
 		
 	}
 
@@ -91,35 +220,28 @@ public final class Knight extends Hero{
 	
 	public void slam(Knight k ,int field){
 		
+		if(isDead())
+			return ;
+		
 		has_field_advantage = checkField(field);
 		
 		if(has_field_advantage){
 			
-		
-			k.decreaseHP(SLAM_BASE_DMG +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG)+
-					(level * SLAM_LVL_INCREASE)+
-					Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG));
-		
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
-			decreaseHP(SLAM_BASE_DMG +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
-					(k.level * SLAM_LVL_INCREASE)+
-					Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG));
+			k.decreaseHP(field_increased_dmg +
+					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
+					(level * SLAM_LVL_INCREASE));
 			
 		}
 		
 		else if(!has_field_advantage){
 			
-		
-			k.decreaseHP(SLAM_BASE_DMG +
-					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG)+
-					(level * SLAM_LVL_INCREASE));
-		
 			
-			decreaseHP(SLAM_BASE_DMG +
+			k.decreaseHP(SLAM_BASE_DMG +
 					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
-					(k.level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE));
 			
 		}
 		
@@ -128,9 +250,60 @@ public final class Knight extends Hero{
 	
 	public void slam(Wizard w ,int field){
 		
+		
+		if(isDead())
+			return ;
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			
+			w.decreaseHP(field_increased_dmg +
+					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
+					(level * SLAM_LVL_INCREASE));
+			
+		}
+		
+		else if(!has_field_advantage){
+			
+			
+			w.decreaseHP(SLAM_BASE_DMG +
+					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
+					(level * SLAM_LVL_INCREASE));
+			
+		}
+		
 	}
 
 	public void slam(Rogue r ,int field){
+		
+		if(isDead())
+			return ;
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			
+			r.decreaseHP(field_increased_dmg +
+					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
+					(level * SLAM_LVL_INCREASE));
+			
+		}
+		
+		else if(!has_field_advantage){
+			
+			
+			r.decreaseHP(SLAM_BASE_DMG +
+					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
+					(level * SLAM_LVL_INCREASE));
+			
+		}
 		
 	}
 	
@@ -138,4 +311,19 @@ public final class Knight extends Hero{
 	private boolean checkField(int field){
 		return field == Field.LAND;
 	}
+	
+	
+	public boolean canBeKilledInstantly(Hero h){
+		
+		int coefficient = h.level * 1;
+		if(coefficient > 20)
+			coefficient = 20 ;
+		
+		if(this.HP < Percent.getPercent(coefficient, this.maxHP))
+			return true ;
+		
+		return false ;
+	}
+	
+	
 }
