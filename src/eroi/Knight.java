@@ -1,7 +1,5 @@
 package eroi;
 
-import javax.naming.LimitExceededException;
-
 import field.Field;
 import Calculus.Percent;
 
