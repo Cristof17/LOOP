@@ -4,15 +4,15 @@ public final class Knight extends Hero{
 	
 	private static final int HP_INCREMENT = 80;
 	
-	private static final int PYROMANCER_EXECUTE_DMG_INCREASE = 0;
+	private static final int PYROMANCER_EXECUTE_DMG_INCREASE = 10;
 	private static final int KNIGHT_EXECUTE_DMG_INCREASE = 0;
-	private static final int WIZARD_EXECUTE_DMG_INCREASE = 0;
-	private static final int ROGUE_EXECUTE_DMG_INCREASE = 0;
+	private static final int WIZARD_EXECUTE_DMG_INCREASE = -20;
+	private static final int ROGUE_EXECUTE_DMG_INCREASE = 15;
 	
-	private static final int PYROMANCER_SLAM_DMG_INCREASE = 0;
-	private static final int KNIGHT_SLAM_DMG_INCREASE = 0;
-	private static final int WIZARD_SLAM_DMG_INCREASE = 0;
-	private static final int ROGUE_SLAM_DMG_INCREASE = 0;
+	private static final int PYROMANCER_SLAM_DMG_INCREASE = -10;
+	private static final int KNIGHT_SLAM_DMG_INCREASE = 20;
+	private static final int WIZARD_SLAM_DMG_INCREASE = 5;
+	private static final int ROGUE_SLAM_DMG_INCREASE = -20;
 	
 	public Knight(){
 		this.XP = 0;
