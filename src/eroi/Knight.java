@@ -217,8 +217,7 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG +
-									  (level * SLAM_LVL_INCREASE)+
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
 									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
 			p.decreaseHP(field_increased_dmg +
@@ -248,8 +247,7 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG +
-									  (level * SLAM_LVL_INCREASE)+
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
 									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
 			k.decreaseHP(field_increased_dmg +
@@ -280,8 +278,7 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG +
-									  (level * SLAM_LVL_INCREASE)+
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
 									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
 			w.decreaseHP(field_increased_dmg +
@@ -310,8 +307,7 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG +
-									  (level * SLAM_LVL_INCREASE)+
+			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
 									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
 			
 			r.decreaseHP(field_increased_dmg +
