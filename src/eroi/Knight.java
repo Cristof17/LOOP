@@ -14,6 +14,12 @@ public final class Knight extends Hero{
 	private static final int WIZARD_SLAM_DMG_INCREASE = 5;
 	private static final int ROGUE_SLAM_DMG_INCREASE = -20;
 	
+	private static final int EXECUTE_BASE_DMG = 200;
+	private static final int EXECUTE_LVL_INCREASE = 30;
+	
+	private static final int SLAM_BASE_DMG = 100;
+	private static final int SLAM_LVL_INCREASE = 40;
+	
 	public Knight(){
 		this.XP = 0;
 		this.HP = 900;

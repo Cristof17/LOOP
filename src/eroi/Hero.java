@@ -10,7 +10,7 @@ public class Hero {
 		return 0;
 	}
 	
-	protected int decreaseHD(int value){
+	protected int decreaseHP(int value){
 		return 0;
 	}
 	
