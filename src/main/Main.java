@@ -100,6 +100,19 @@ public class Main {
 		}	
 
 		
+		Knight k1 = new Knight();
+		Pyromancer p1 = new Pyromancer();
+		
+		k1.fightsWith(p1, Field.DESERT);
+		
+		System.out.println("K1 = "+k1.HP );
+		System.out.println("P1 = "+p1.HP );
+		
+		k1.fightsWith(p1, Field.DESERT);
+		
+		System.out.println("K1 = "+k1.HP );
+		System.out.println("P1 = "+p1.HP );
+		
 	}
 	
 }

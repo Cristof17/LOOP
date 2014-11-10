@@ -41,15 +41,20 @@ public final class Knight extends Hero{
 	public void fightsWith(Knight k , int field){
 		
 		this.execute(k, field);
-		k.execute(this, field);
-		
 		this.slam(k, field);
+		
+		k.execute(this, field);
 		k.slam(this, field);
 	}
 	
 	
 	public void fightsWith(Pyromancer p , int field){
+		
 		this.execute(p, field);
+		this.slam(p, field);
+		
+		p.fireblast(this, field);
+		p.ignite(this, field);
 		
 	}
 	
