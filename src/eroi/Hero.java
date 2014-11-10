@@ -6,6 +6,7 @@ public class Hero {
 	public int XP;
 	public int HP;
 	public int maxHP;
+	public int damageOverTimeRounds = 0;
 	
 	public int increaseHP(int value ){
 		return 0;
@@ -36,6 +37,15 @@ public class Hero {
 		
 	}
 	
+	public void takeDamageOverTime(int damage ,int rounds ){
+		decreaseHP(damage);
+		this.damageOverTimeRounds = rounds ;
+	}
+	
+	public void decreaseDamageOverTimeRounds(){
+		damageOverTimeRounds --;
+	}
+	
 	public boolean isDead(){
 		return HP <= 0 ;
 	}
@@ -48,6 +58,8 @@ public class Hero {
 	public void calculateLevel(Hero loser){
 		this.XP = loser.XP + Math.max(0, 200 - (this.level - loser.level ) *40);
 	}
+	
+	
 	
 	
 }

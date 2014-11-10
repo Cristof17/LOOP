@@ -4,6 +4,7 @@ import java.io.*;
 import eroi.Knight;
 import eroi.Pyromancer;
 import eroi.Rogue;
+import eroi.Wizard;
 import field.Field;
 
 
@@ -100,18 +101,18 @@ public class Main {
 		}	
 
 		
+		
 		Knight k1 = new Knight();
-		Pyromancer p1 = new Pyromancer();
+		Wizard w1 = new Wizard();
 		
-		k1.fightsWith(p1, Field.DESERT);
+		for(int i = 0 ; i < 2 ; i++){
 		
-		System.out.println("K1 = "+k1.HP );
-		System.out.println("P1 = "+p1.HP );
-		
-		k1.fightsWith(p1, Field.DESERT);
-		
-		System.out.println("K1 = "+k1.HP );
-		System.out.println("P1 = "+p1.HP );
+			k1.fightsWith(w1, Field.WOODS, i );
+			
+			System.out.println("K1 = "+k1.HP );
+			System.out.println("W1 = "+w1.HP );
+		}
+
 		
 	}
 	
