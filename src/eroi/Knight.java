@@ -65,7 +65,7 @@ public final class Knight extends Hero{
 		int damage_done_by_slam_without_modifiers = this.slam(w, field);
 		
 		w.drain(this, field);
-		w.deflect(this, field , int damage_taken);
+		w.deflect(this, field , damage_done_by_execute_without_modifiers + damage_done_by_slam_without_modifiers);
 		
 	}
 	
@@ -99,7 +99,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(PYROMANCER_EXECUTE_DMG_INCREASE, field_increased_dmg)+
 					(level * EXECUTE_LVL_INCREASE));
 			
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * EXECUTE_LVL_INCREASE));
@@ -143,7 +143,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, field_increased_dmg)+
 					(level * EXECUTE_LVL_INCREASE));
 		
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * EXECUTE_LVL_INCREASE));
@@ -189,7 +189,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(WIZARD_EXECUTE_DMG_INCREASE, field_increased_dmg)+
 					(level * EXECUTE_LVL_INCREASE));
 		
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * EXECUTE_LVL_INCREASE));
@@ -235,7 +235,7 @@ public final class Knight extends Hero{
 					(level * EXECUTE_LVL_INCREASE));
 		
 			
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * EXECUTE_LVL_INCREASE));
@@ -262,8 +262,6 @@ public final class Knight extends Hero{
 		
 		int damage_done_this_fight = 0 ;
 		
-		if(isDead())
-			return 0;
 		
 		has_field_advantage = checkField(field);
 		
@@ -276,7 +274,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(PYROMANCER_SLAM_DMG_INCREASE, field_increased_dmg)+
 					(level * SLAM_LVL_INCREASE));
 			
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * SLAM_LVL_INCREASE));
@@ -301,8 +299,6 @@ public final class Knight extends Hero{
 		
 		int damage_done_this_fight = 0 ;
 		
-		if(isDead())
-			return 0;
 		
 		has_field_advantage = checkField(field);
 		
@@ -315,7 +311,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
 					(level * SLAM_LVL_INCREASE));
 			
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * SLAM_LVL_INCREASE));
@@ -340,8 +336,6 @@ public final class Knight extends Hero{
 		
 		int damage_done_this_fight = 0 ;
 		
-		if(isDead())
-			return 0;
 		
 		has_field_advantage = checkField(field);
 		
@@ -354,7 +348,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(WIZARD_SLAM_DMG_INCREASE, field_increased_dmg)+
 					(level * SLAM_LVL_INCREASE));
 		
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * SLAM_LVL_INCREASE));
@@ -380,8 +374,6 @@ public final class Knight extends Hero{
 		
 		int damage_done_this_fight = 0 ;
 		
-		if(isDead())
-			return 0 ;
 		
 		has_field_advantage = checkField(field);
 		
@@ -394,7 +386,7 @@ public final class Knight extends Hero{
 					Percent.getPercent(ROGUE_SLAM_DMG_INCREASE, field_increased_dmg)+
 					(level * SLAM_LVL_INCREASE));
 			
-			//return damage without race modifiers
+			//return damage without rase modifiers
 			// for wizard 
 			damage_done_this_fight =(field_increased_dmg +
 					               (level * SLAM_LVL_INCREASE));

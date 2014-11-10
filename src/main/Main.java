@@ -107,7 +107,7 @@ public class Main {
 		
 		for(int i = 0 ; i < 2 ; i++){
 		
-			k1.fightsWith(w1, Field.WOODS, i );
+			k1.fightsWith(w1, Field.DESERT, i );
 			
 			System.out.println("K1 = "+k1.HP );
 			System.out.println("W1 = "+w1.HP );
