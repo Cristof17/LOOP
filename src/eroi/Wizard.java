@@ -41,12 +41,12 @@ public class Wizard extends Hero {
 	
 	public void fightsWith(Knight k , int field , int round){
 	
-		int damage_taken_by_execute_without_modifiers = k.execute(this, field);
-		int damage_taken_by_slam_without_modifiers = k.slam(this, field);
+		int damage_taken_by_execute_without_ = k.execute(this, field);
+		int damage_taken_by_slam_without_ = k.slam(this, field);
 		
 		this.drain(k,field);
-		this.deflect(k, field,damage_taken_by_execute_without_modifiers +
-							  damage_taken_by_slam_without_modifiers);
+		this.deflect(k, field,damage_taken_by_execute_without_ +
+							  damage_taken_by_slam_without_);
 		
 	}
 	
@@ -77,18 +77,16 @@ public class Wizard extends Hero {
 		
 		if(has_field_advantage){
 		
-			procent = Percent.getPercent(100 + KNIGHT_DRAIN_DMG_INCREASE , 20 + (level * PROCENT_INCREASE));
+			procent = Percent.getPercent(100 + KNIGHT_DRAIN_DMG_INCREASE , 20 + (level * 5));
 			
-			int damage = (int) Math.round((procent * Math.min(0.3 * k.maxHP, k.HP)));
+			int damage = Percent.getPercent(procent ,(int)( Math.min(0.3 * k.maxHP, k.HP)));
 			
-			int increased_field_damage = damage + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage);
 			
-			k.decreaseHP(increased_field_damage +
-					     Percent.getPercent(FIELD_DAMAGE_INCREASE, increased_field_damage * damage));
+			k.decreaseHP(damage + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage));
 			
-			int procent_without_rase_modifiers = 20 + (level * PROCENT_INCREASE);
-			damage_done_this_fight =(int) Math.round (procent_without_rase_modifiers * Math.min(0.3 * k.maxHP, k.HP)+
-										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(int)( procent_without_rase_modifiers * Math.min(0.3 * k.maxHP, k.HP))));
+			int procent_without_rase = 20 + (level * 5);
+			damage_done_this_fight =Percent.getPercent(procent_without_rase ,(int) Math.min(0.3 * k.maxHP, k.HP)+
+										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(int)( procent_without_rase * Math.min(0.3 * k.maxHP, k.HP))));
 			
 		}
 		
@@ -101,8 +99,8 @@ public class Wizard extends Hero {
 			
 			k.decreaseHP(damage); 
 			
-			int procent_without_rase_modifiers = 20 + (level * PROCENT_INCREASE);
-			damage_done_this_fight =Percent.getPercent(procent_without_rase_modifiers ,(int) Math.min(0.3 * k.maxHP, k.HP));
+			int procent_without_rase = 20 + (level * PROCENT_INCREASE);
+			damage_done_this_fight =Percent.getPercent(procent_without_rase ,(int) Math.min(0.3 * k.maxHP, k.HP));
 		
 		}
 		
@@ -129,32 +127,34 @@ public class Wizard extends Hero {
 		int damage_done_this_fight = 0;
 		int damage_percent = 0 ;
 		
-		if(DEFLECT_DMG_PROCENT + (level * DEFLECT_DMG_PROCENT_INCREASE) > DEFLECT_DMG_PROCENT_MAXIMUM){
-			damage_percent = DEFLECT_DMG_PROCENT_MAXIMUM;
+		if(35 + (level * 2) > 70){
+			damage_percent = 70;
 		}else{
-			damage_percent = DEFLECT_DMG_PROCENT + (level * DEFLECT_DMG_PROCENT_INCREASE);
+			damage_percent = 35 + (level * 2);
 		}
 		
 		has_field_advantage = checkField(field);
 		
 		if(has_field_advantage){
 			
-			int damage_without_rase_modifiers = Percent.getPercent(damage_percent, damage_taken);
+			int damage_without_rase = Percent.getPercent(damage_percent, damage_taken);
 			
-			k.decreaseHP(damage_without_rase_modifiers + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase_modifiers)+
-						 Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase_modifiers));
+			int damage_with_rase = damage_without_rase + 
+									Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase); 
 			
-			damage_done_this_fight = damage_without_rase_modifiers +
-					                 Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase_modifiers);
+			k.decreaseHP(damage_with_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_rase));
+			
+			damage_done_this_fight = damage_without_rase +
+					                 Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase);
 			
 		}
 		else if(!has_field_advantage){
 			
-			int damage_without_rase_modifiers = Percent.getPercent(damage_percent, damage_taken);
+			int damage_without_rase = Percent.getPercent(damage_percent, damage_taken);
 			
-			k.decreaseHP(damage_without_rase_modifiers + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase_modifiers));
+			k.decreaseHP(damage_without_rase + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase));
 			
-			damage_done_this_fight = damage_without_rase_modifiers;
+			damage_done_this_fight = damage_without_rase;
 		}
 		
 		return damage_done_this_fight;
