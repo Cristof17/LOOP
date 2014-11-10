@@ -139,13 +139,11 @@ public class Wizard extends Hero {
 			
 			int damage_without_rase = Percent.getPercent(damage_percent, damage_taken);
 			
-			int damage_with_rase = damage_without_rase + 
-									Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase); 
+			int damage_with_rase = damage_without_rase + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase); 
 			
 			k.decreaseHP(damage_with_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_rase));
 			
-			damage_done_this_fight = damage_without_rase +
-					                 Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase);
+			damage_done_this_fight = damage_without_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase);
 			
 		}
 		else if(!has_field_advantage){
