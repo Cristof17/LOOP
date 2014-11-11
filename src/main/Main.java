@@ -103,8 +103,10 @@ public class Main {
 
 		
 		
-		Knight k1 = new Knight();
+		Wizard k1 = new Wizard();
 		Wizard w1 = new Wizard();
+		
+
 		
 		for(int i = 0 ; i < 2 ; i++){
 		

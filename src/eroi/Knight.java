@@ -61,8 +61,10 @@ public final class Knight extends Hero{
 	
 	public void fightsWith(Wizard w , int field , int round){
 		
-		int damage_done_by_execute_without_modifiers = this.execute(w, field);
-		int damage_done_by_slam_without_modifiers = this.slam(w, field);
+		
+		
+		int damage_done_by_execute_without_modifiers =this.execute(w, field);
+		int damage_done_by_slam_without_modifiers =this.slam(w, field);
 		
 		w.drain(this, field);
 		w.deflect(this, field , damage_done_by_execute_without_modifiers + damage_done_by_slam_without_modifiers);
@@ -90,14 +92,14 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = EXECUTE_BASE_DMG +
+			int field_increased_dmg =Math.round( EXECUTE_BASE_DMG +
 								   (level * EXECUTE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+								    Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG)));
 										   
 		
-			p.decreaseHP(field_increased_dmg +
+			p.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(PYROMANCER_EXECUTE_DMG_INCREASE, field_increased_dmg)+
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 			
 			//return damage without rase modifiers
 			// for wizard 
@@ -109,9 +111,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 		
-			p.decreaseHP(EXECUTE_BASE_DMG +
+			p.decreaseHP(Math.round( EXECUTE_BASE_DMG +
 					Percent.getPercent(PYROMANCER_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 			
 			damage_done_this_fight = EXECUTE_BASE_DMG +
 					                 (level * EXECUTE_LVL_INCREASE);
@@ -119,6 +121,9 @@ public final class Knight extends Hero{
 		}
 		return damage_done_this_fight;
 	}
+	
+	
+	
 	
 	public int execute(Knight k ,int field){
 		
@@ -134,14 +139,14 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = EXECUTE_BASE_DMG +
+			int field_increased_dmg = Math.round( EXECUTE_BASE_DMG +
 								   (level * EXECUTE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG)));
 										   
 		
-			k.decreaseHP(field_increased_dmg +
+			k.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, field_increased_dmg)+
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 		
 			//return damage without rase modifiers
 			// for wizard 
@@ -153,9 +158,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 		
-			k.decreaseHP(EXECUTE_BASE_DMG +
+			k.decreaseHP(Math.round( EXECUTE_BASE_DMG +
 					Percent.getPercent(KNIGHT_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 		
 			
 			damage_done_this_fight = EXECUTE_BASE_DMG +
@@ -171,7 +176,7 @@ public final class Knight extends Hero{
 		int damage_done_this_fight = 0 ;
 		
 		if(canBeKilledInstantly(w)){
-			this.HP = 0 ;
+			w.HP = 0 ;
 			return 0;
 		}
 		
@@ -180,14 +185,14 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = EXECUTE_BASE_DMG +
+			int field_increased_dmg =Math.round( EXECUTE_BASE_DMG +
 								   (level * EXECUTE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
-										   
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_LVL_INCREASE)));
+			
 		
-			w.decreaseHP(field_increased_dmg +
-					Percent.getPercent(WIZARD_EXECUTE_DMG_INCREASE, field_increased_dmg)+
-					(level * EXECUTE_LVL_INCREASE));
+			w.decreaseHP(Math.round(field_increased_dmg +
+					Percent.getPercent(WIZARD_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG+
+					(level * EXECUTE_LVL_INCREASE))));
 		
 			//return damage without rase modifiers
 			// for wizard 
@@ -199,9 +204,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 		
-			w.decreaseHP(EXECUTE_BASE_DMG +
+			w.decreaseHP(Math.round( EXECUTE_BASE_DMG +
 					Percent.getPercent(WIZARD_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 		
 			damage_done_this_fight = EXECUTE_BASE_DMG +
                     (level * EXECUTE_LVL_INCREASE);
@@ -225,14 +230,14 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = EXECUTE_BASE_DMG +
+			int field_increased_dmg = Math.round( EXECUTE_BASE_DMG +
 								   (level * EXECUTE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG));
+								   Percent.getPercent(FIELD_DMG_INCREASE,EXECUTE_BASE_DMG + (level * EXECUTE_BASE_DMG)));
 										   
 		
-			r.decreaseHP(field_increased_dmg +
+			r.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(ROGUE_EXECUTE_DMG_INCREASE, field_increased_dmg)+
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 		
 			
 			//return damage without rase modifiers
@@ -245,9 +250,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 		
-			r.decreaseHP(EXECUTE_BASE_DMG +
+			r.decreaseHP(Math.round( EXECUTE_BASE_DMG +
 					Percent.getPercent(ROGUE_EXECUTE_DMG_INCREASE, EXECUTE_BASE_DMG) +
-					(level * EXECUTE_LVL_INCREASE));
+					(level * EXECUTE_LVL_INCREASE)));
 			
 			damage_done_this_fight = EXECUTE_BASE_DMG +
                     (level * EXECUTE_LVL_INCREASE);
@@ -267,12 +272,12 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
-									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			int field_increased_dmg = Math.round( SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG));
 			
-			p.decreaseHP(field_increased_dmg +
+			p.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(PYROMANCER_SLAM_DMG_INCREASE, field_increased_dmg)+
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			//return damage without rase modifiers
 			// for wizard 
@@ -283,9 +288,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 			
-			p.decreaseHP(SLAM_BASE_DMG +
+			p.decreaseHP(Math.round( SLAM_BASE_DMG +
 					Percent.getPercent(PYROMANCER_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			damage_done_this_fight=(SLAM_BASE_DMG +
 					(level * SLAM_LVL_INCREASE));
@@ -304,12 +309,12 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
-									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			int field_increased_dmg = Math.round( SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG));
 			
-			k.decreaseHP(field_increased_dmg +
+			k.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, field_increased_dmg)+
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			//return damage without rase modifiers
 			// for wizard 
@@ -321,9 +326,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 			
-			k.decreaseHP(SLAM_BASE_DMG +
+			k.decreaseHP(Math.round( SLAM_BASE_DMG +
 					Percent.getPercent(KNIGHT_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			damage_done_this_fight=(SLAM_BASE_DMG +
 					(level * SLAM_LVL_INCREASE));
@@ -341,12 +346,12 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
-									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			int field_increased_dmg = Math.round( SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG));
 			
-			w.decreaseHP(field_increased_dmg +
+			w.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(WIZARD_SLAM_DMG_INCREASE, field_increased_dmg)+
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 		
 			//return damage without rase modifiers
 			// for wizard 
@@ -358,9 +363,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 			
-			w.decreaseHP(SLAM_BASE_DMG +
+			w.decreaseHP(Math.round( SLAM_BASE_DMG +
 					Percent.getPercent(WIZARD_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			damage_done_this_fight=(SLAM_BASE_DMG +
 					(level * SLAM_LVL_INCREASE));
@@ -379,12 +384,12 @@ public final class Knight extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg = SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
-									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG);
+			int field_increased_dmg = Math.round( SLAM_BASE_DMG + (level * SLAM_LVL_INCREASE)+
+									  Percent.getPercent(FIELD_DMG_INCREASE, SLAM_BASE_DMG));
 			
-			r.decreaseHP(field_increased_dmg +
+			r.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(ROGUE_SLAM_DMG_INCREASE, field_increased_dmg)+
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			//return damage without rase modifiers
 			// for wizard 
@@ -395,9 +400,9 @@ public final class Knight extends Hero{
 		else if(!has_field_advantage){
 			
 			
-			r.decreaseHP(SLAM_BASE_DMG +
+			r.decreaseHP(Math.round( SLAM_BASE_DMG +
 					Percent.getPercent(ROGUE_SLAM_DMG_INCREASE, SLAM_BASE_DMG) +
-					(level * SLAM_LVL_INCREASE));
+					(level * SLAM_LVL_INCREASE)));
 			
 			damage_done_this_fight=(SLAM_BASE_DMG +
 					(level * SLAM_LVL_INCREASE));
@@ -417,6 +422,7 @@ public final class Knight extends Hero{
 	public boolean canBeKilledInstantly(Hero h){
 		
 		int coefficient = h.level * 1;
+		
 		if(coefficient > 20)
 			coefficient = 20 ;
 		

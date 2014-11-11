@@ -2,9 +2,9 @@ package Calculus;
 
 public class Percent {
 
-	public static int getPercent(int percent , int from){
-		float a =  ((float)percent/100)*from ;
-		return Math.round(a);
+	public static float getPercent(float percent , float from){
+		float a =  (percent/100)*from ;
+		return a;
 	}
 	
 }

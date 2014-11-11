@@ -1,6 +1,6 @@
 package eroi;
 
-public class Hero {
+public abstract class Hero {
 	
 	public int level;
 	public int XP;
