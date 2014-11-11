@@ -43,7 +43,6 @@ public class Pyromancer extends Hero{
 		k.execute(this, field);
 		k.slam(this, field);
 		
-		k.takeDamageOverTime(50, 3);
 	}
 	
 	
@@ -71,16 +70,16 @@ public class Pyromancer extends Hero{
 	
 	public void fireblast(Pyromancer p ,int field){
 		
+		
 		if(has_field_advantage){
 			
 			int field_increased_dmg = Math.round( FIREBLAST_BASE_DMG +
 								   (level * FIREBLAST_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_BASE_DMG)));
+								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_LVL_INCREASE)));
 										   
 		
 			p.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(PYROMANCER_FIREBLAST_DMG_INCREASE, field_increased_dmg)+
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(PYROMANCER_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
 		
 		}
 		
@@ -88,8 +87,8 @@ public class Pyromancer extends Hero{
 			
 		
 			p.decreaseHP(Math.round( FIREBLAST_BASE_DMG +
-					Percent.getPercent(PYROMANCER_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG) +
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(PYROMANCER_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
+					(level * FIREBLAST_LVL_INCREASE))));
 		
 		}
 		
@@ -98,18 +97,15 @@ public class Pyromancer extends Hero{
 	
 	public void fireblast(Knight k ,int field){
 		
-		has_field_advantage = checkField(field);
-		
 		if(has_field_advantage){
 			
 			int field_increased_dmg = Math.round( FIREBLAST_BASE_DMG +
 								   (level * FIREBLAST_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_BASE_DMG)));
+								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_LVL_INCREASE)));
 										   
 		
 			k.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, field_increased_dmg)+
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
 		
 		}
 		
@@ -117,8 +113,8 @@ public class Pyromancer extends Hero{
 			
 		
 			k.decreaseHP(Math.round( FIREBLAST_BASE_DMG +
-					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG) +
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
+					(level * FIREBLAST_LVL_INCREASE))));
 		
 		}
 
@@ -127,18 +123,15 @@ public class Pyromancer extends Hero{
 	
 	public void fireblast(Wizard w , int field){
 		
-		has_field_advantage = checkField(field);
-		
 		if(has_field_advantage){
 			
 			int field_increased_dmg = Math.round( FIREBLAST_BASE_DMG +
 								   (level * FIREBLAST_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_BASE_DMG)));
+								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_LVL_INCREASE)));
 										   
 		
 			w.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(WIZARD_FIREBLAST_DMG_INCREASE, field_increased_dmg)+
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(WIZARD_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
 		
 		}
 		
@@ -146,8 +139,8 @@ public class Pyromancer extends Hero{
 			
 		
 			w.decreaseHP(Math.round( FIREBLAST_BASE_DMG +
-					Percent.getPercent(WIZARD_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG) +
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(WIZARD_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
+					(level * FIREBLAST_LVL_INCREASE))));
 		
 		}
 		
@@ -160,12 +153,11 @@ public class Pyromancer extends Hero{
 			
 			int field_increased_dmg = Math.round( FIREBLAST_BASE_DMG +
 								   (level * FIREBLAST_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_BASE_DMG)));
+								   Percent.getPercent(FIELD_DMG_INCREASE,FIREBLAST_BASE_DMG + (level * FIREBLAST_LVL_INCREASE)));
 										   
 		
 			r.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, field_increased_dmg)+
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
 		
 		}
 		
@@ -173,8 +165,8 @@ public class Pyromancer extends Hero{
 			
 		
 			r.decreaseHP(Math.round( FIREBLAST_BASE_DMG +
-					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG) +
-					(level * FIREBLAST_LVL_INCREASE)));
+					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
+					(level * FIREBLAST_LVL_INCREASE))));
 		
 		}
 		
@@ -187,12 +179,11 @@ public class Pyromancer extends Hero{
 			
 			int field_increased_dmg =Math.round( IGNITE_BASE_DMG +
 								   (level * IGNITE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_BASE_DMG)));
+								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)));
 										   
 		
 			p.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(PYROMANCER_FIREBLAST_DMG_INCREASE, field_increased_dmg)+
-					(level * IGNITE_LVL_INCREASE)));
+					Percent.getPercent(PYROMANCER_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
 		
 		}
 		
@@ -200,8 +191,8 @@ public class Pyromancer extends Hero{
 			
 		
 			p.decreaseHP(Math.round( IGNITE_BASE_DMG +
-					Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG) +
-					(level * IGNITE_LVL_INCREASE)));
+					Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG +
+					(level * IGNITE_LVL_INCREASE))));
 		
 		}
 		
@@ -215,13 +206,11 @@ public class Pyromancer extends Hero{
 			
 			int field_increased_dmg =Math.round( IGNITE_BASE_DMG +
 								   (level * IGNITE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_BASE_DMG)));
+								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)));
 										   
 		
 			k.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, field_increased_dmg)+
-					(level * IGNITE_LVL_INCREASE)));
-			
+					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
 		
 		}
 		
@@ -229,11 +218,10 @@ public class Pyromancer extends Hero{
 			
 		
 			k.decreaseHP(Math.round( IGNITE_BASE_DMG +
-					Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG) +
-					(level * IGNITE_LVL_INCREASE)));
-			
+					Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG +
+					(level * IGNITE_LVL_INCREASE))));
 		
-		}
+		}		
 		
 		
 		
@@ -242,9 +230,53 @@ public class Pyromancer extends Hero{
 	
 	public void ignite(Wizard w ,int field){
 		
+		if(has_field_advantage){
+			
+			int field_increased_dmg =Math.round( IGNITE_BASE_DMG +
+								   (level * IGNITE_LVL_INCREASE)+
+								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)));
+										   
+		
+			w.decreaseHP(Math.round( field_increased_dmg +
+					Percent.getPercent(WIZARD_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
+		
+		}
+		
+		else if(!has_field_advantage){
+			
+		
+			w.decreaseHP(Math.round( IGNITE_BASE_DMG +
+					Percent.getPercent(WIZARD_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG +
+					(level * IGNITE_LVL_INCREASE))));
+		
+		}
+		
+		
 	}
 	
 	public void ignite(Rogue r ,int field){
+		
+		
+		if(has_field_advantage){
+			
+			int field_increased_dmg =Math.round( IGNITE_BASE_DMG +
+								   (level * IGNITE_LVL_INCREASE)+
+								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)));
+										   
+		
+			r.decreaseHP(Math.round( field_increased_dmg +
+					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
+		
+		}
+		
+		else if(!has_field_advantage){
+			
+		
+			r.decreaseHP(Math.round( IGNITE_BASE_DMG +
+					Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG +
+					(level * IGNITE_LVL_INCREASE))));
+		
+		}
 		
 	}
 	

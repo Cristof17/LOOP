@@ -8,7 +8,7 @@ import eroi.Wizard;
 import field.Field;
 
 
-public class Main {
+public class Main  {
 	
 	private static FileInputStream in ;
 	private static FileOutputStream out ;
@@ -101,7 +101,16 @@ public class Main {
 			e.printStackTrace();
 		}	
 
-		
+		/*
+		 * 
+		 * Sa nu dau de 2 ori spell damage
+		 * Sa nu dau de 2 ori spell damage
+		 * Sa nu dau de 2 ori spell damage 
+		 * Sa nu dau de 2 ori spell damage
+		 * Sa nu dau de 2 ori spell damage
+		 * 
+		 * 
+		 */
 		
 		Wizard k1 = new Wizard();
 		Wizard w1 = new Wizard();
@@ -118,5 +127,6 @@ public class Main {
 
 		
 	}
+
 	
 }

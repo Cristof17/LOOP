@@ -7,6 +7,8 @@ public abstract class Hero {
 	public int HP;
 	public int maxHP;
 	public int damageOverTimeRounds = 0;
+	public int damageOverTime = 0 ;
+	public boolean incapacitate ;
 	
 	public int increaseHP(int value ){
 		return 0;
@@ -37,9 +39,21 @@ public abstract class Hero {
 		
 	}
 	
-	public void takeDamageOverTime(int damage ,int rounds ){
-		decreaseHP(damage);
+	public void hasToTakeDamageThisRound(){
+		
+	}
+	
+	public void setDamageOverTime(int damage ,int rounds ,boolean incapacitate){
+		this.damageOverTime = damage ;
 		this.damageOverTimeRounds = rounds ;
+		this.incapacitate = incapacitate;
+	}
+	
+	public void takeDamageOverTime(){
+		if(damageOverTimeRounds > 0){
+			decreaseHP(damageOverTime);
+			damageOverTimeRounds--;
+		}
 	}
 	
 	public void decreaseDamageOverTimeRounds(){

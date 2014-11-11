@@ -61,8 +61,6 @@ public final class Knight extends Hero{
 	
 	public void fightsWith(Wizard w , int field , int round){
 		
-		
-		
 		int damage_done_by_execute_without_modifiers =this.execute(w, field);
 		int damage_done_by_slam_without_modifiers =this.slam(w, field);
 		
