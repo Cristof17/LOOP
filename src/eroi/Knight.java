@@ -50,6 +50,7 @@ public final class Knight extends Hero{
 	
 	public void fightsWith(Pyromancer p , int field , int round){
 		
+		
 		this.execute(p, field);
 		this.slam(p, field);
 		

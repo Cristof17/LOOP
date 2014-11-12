@@ -1,6 +1,8 @@
 package main;
 import java.io.*;
 
+import Calculus.Percent;
+
 import eroi.Knight;
 import eroi.Pyromancer;
 import eroi.Rogue;
@@ -113,13 +115,15 @@ public class Main  {
 		 */
 		
 		Wizard k1 = new Wizard();
-		Wizard w1 = new Wizard();
+		Pyromancer w1 = new Pyromancer();
 		
-
+//		System.out.println (Math.round( 500 - (0.35 * 1.3 *500)) -27);
+//
+		System.out.println(Math.round( 500 - Percent.getPercent (35 + (Percent.getPercent(30, 35)) ,500) - 27));
 		
 		for(int i = 0 ; i < 2 ; i++){
 		
-			k1.fightsWith(w1, Field.DESERT, i );
+			k1.fightsWith(w1, Field.LAND, i );
 			
 			System.out.println("K1 = "+k1.HP );
 			System.out.println("W1 = "+w1.HP );

@@ -39,9 +39,6 @@ public abstract class Hero {
 		
 	}
 	
-	public void hasToTakeDamageThisRound(){
-		
-	}
 	
 	public void setDamageOverTime(int damage ,int rounds ,boolean incapacitate){
 		this.damageOverTime = damage ;

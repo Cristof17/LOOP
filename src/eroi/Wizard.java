@@ -53,6 +53,13 @@ public class Wizard extends Hero {
 	
 	public void fightsWith(Pyromancer p , int field , int round){
 		
+		float dmg_fireblast = p.fireblast(this, field);
+		float dmg_ignite = p.ignite(this, field);
+		
+		this.drain(p, field);
+		int dmg = Math.round(dmg_fireblast +dmg_ignite ); 
+		this.deflect(p, field,dmg);
+		
 	}
 	
 	public void fightsWith(Wizard w , int field , int round){
@@ -238,7 +245,44 @@ public class Wizard extends Hero {
 	}
 	
 	
-	public void deflect(Pyromancer p ,int field ,int damage_taken){
+	public float deflect(Pyromancer p ,int field ,int damage_taken){
+		
+		int damage_done_this_fight = 0;
+		int damage_percent = 0 ;
+		
+		if(35 + (level * 2) > 70){
+			damage_percent = 70;
+		}else{
+			damage_percent = 35 + (level * 2);
+		}
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			int damage_without_rase = Math.round(Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken));
+			
+			int damage_with_rase =Math.round( damage_without_rase + Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE , damage_without_rase)); 
+			
+			p.decreaseHP(damage_with_rase);
+			
+			damage_done_this_fight =Math.round(damage_without_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase));
+			
+		}
+		else if(!has_field_advantage){
+			
+			int damage_without_rase =Math.round( Percent.getPercent(damage_percent, damage_taken));
+		
+			float de_scazut  = Percent.getPercent (35 + (Percent.getPercent(30, 35)) ,500);
+			
+			p.decreaseHP((int)de_scazut);
+			
+//			p.decreaseHP(damage_without_rase + Math.round( Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE, damage_without_rase)));
+			
+			damage_done_this_fight = damage_without_rase;
+		}
+		
+		return damage_done_this_fight;
 		
 	}
 
@@ -257,7 +301,7 @@ public class Wizard extends Hero {
 		
 		if(has_field_advantage){
 			
-			int damage_without_rase =Math.round(Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken));
+			int damage_without_rase = Math.round(Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken));
 			
 			int damage_with_rase =Math.round( damage_without_rase + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE , damage_without_rase)); 
 			
