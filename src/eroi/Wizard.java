@@ -273,11 +273,10 @@ public class Wizard extends Hero {
 			
 			int damage_without_rase =Math.round( Percent.getPercent(damage_percent, damage_taken));
 		
-			float de_scazut  = Percent.getPercent (35 + (Percent.getPercent(30, 35)) ,500);
+			float dmg  = Percent.getPercent (35 + (Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE, 35)) ,damage_taken);
 			
-			p.decreaseHP((int)de_scazut);
+			p.decreaseHP((int)dmg); //it works only by casting to int not using Math.round()
 			
-//			p.decreaseHP(damage_without_rase + Math.round( Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE, damage_without_rase)));
 			
 			damage_done_this_fight = damage_without_rase;
 		}
