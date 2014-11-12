@@ -9,6 +9,8 @@ public abstract class Hero {
 	public int damageOverTimeRounds = 0;
 	public int damageOverTime = 0 ;
 	public boolean incapacitate ;
+	public int x;
+	public int y;
 	
 	public int increaseHP(int value ){
 		return 0;
@@ -70,7 +72,13 @@ public abstract class Hero {
 		this.XP = loser.XP + Math.max(0, 200 - (this.level - loser.level ) *40);
 	}
 	
+	public boolean isIncapacitated(){
+		return this.incapacitate;
+	}
 	
-	
+	public abstract void fightsWith(Pyromancer p,int field, int round);
+	public abstract void fightsWith(Knight k ,int field, int round);
+	public abstract void fightsWith(Wizard w,int field, int round);
+	public abstract void fightsWith(Rogue r ,int field, int round);
 	
 }

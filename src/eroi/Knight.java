@@ -66,7 +66,7 @@ public final class Knight extends Hero{
 		int damage_done_by_slam_without_modifiers =this.slam(w, field);
 		
 		w.drain(this, field);
-		w.deflect(this, field , damage_done_by_execute_without_modifiers + damage_done_by_slam_without_modifiers);
+		w.deflect(this, field , (int) damage_done_by_execute_without_modifiers ,(int) damage_done_by_slam_without_modifiers);
 		
 	}
 	

@@ -136,6 +136,8 @@ public class Pyromancer extends Hero{
 		
 		int damage_done_this_fight = 0;
 		
+		has_field_advantage = checkField(field);
+		
 		if(has_field_advantage){
 			
 			int field_increased_dmg = Math.round( FIREBLAST_BASE_DMG +
@@ -273,9 +275,9 @@ public class Pyromancer extends Hero{
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg_base =Math.round( IGNITE_BASE_DMG +
+			int field_increased_dmg_base = Math.round( IGNITE_BASE_DMG +
 								   (level * IGNITE_LVL_INCREASE)+
-								   Math.round( Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE))));
+								   Math.round( Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE))));
 									
 		
 			w.decreaseHP(Math.round( field_increased_dmg_base +
