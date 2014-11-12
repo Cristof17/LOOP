@@ -260,11 +260,11 @@ public class Wizard extends Hero {
 		
 		if(has_field_advantage){
 			
-			int damage_without_rase = Math.round(Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken));
+			float damage_without_rase = Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken);
 			
-			int damage_with_rase =Math.round( damage_without_rase + Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE , damage_without_rase)); 
+			float damage_with_rase =damage_without_rase + Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE , damage_without_rase); 
 			
-			p.decreaseHP(damage_with_rase);
+			p.decreaseHP(Math.round(damage_with_rase));
 			
 			damage_done_this_fight =Math.round(damage_without_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase));
 			
@@ -275,7 +275,7 @@ public class Wizard extends Hero {
 		
 			float dmg  = Percent.getPercent (35 + (Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE, 35)) ,damage_taken);
 			
-			p.decreaseHP((int)dmg); //it works only by casting to int not using Math.round()
+			p.decreaseHP((int)dmg); //it works only by casting to int not using Math.round()';
 			
 			
 			damage_done_this_fight = damage_without_rase;
@@ -300,11 +300,11 @@ public class Wizard extends Hero {
 		
 		if(has_field_advantage){
 			
-			int damage_without_rase = Math.round(Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken));
+			float damage_without_rase = Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken);
 			
-			int damage_with_rase =Math.round( damage_without_rase + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE , damage_without_rase)); 
+			float damage_with_rase =damage_without_rase + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE , damage_without_rase); 
 			
-			k.decreaseHP(damage_with_rase);
+			k.decreaseHP(Math.round(damage_with_rase));
 			
 			damage_done_this_fight =Math.round(damage_without_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase));
 			
@@ -312,20 +312,100 @@ public class Wizard extends Hero {
 		else if(!has_field_advantage){
 			
 			int damage_without_rase =Math.round( Percent.getPercent(damage_percent, damage_taken));
+		
+			float dmg  = Percent.getPercent (35 + (Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, 35)) ,damage_taken);
 			
-			k.decreaseHP(damage_without_rase + Math.round( Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage_without_rase)));
+			k.decreaseHP((int)dmg); //it works only by casting to int not using Math.round()';
+			
 			
 			damage_done_this_fight = damage_without_rase;
 		}
 		
 		return damage_done_this_fight;
+
 	}
 	
-	public void deflect(Wizard w , int field ,int damage_taken){
+	public int deflect(Wizard w , int field ,int damage_taken){
+		
+		int damage_done_this_fight = 0;
+		int damage_percent = 0 ;
+		
+		if(35 + (level * 2) > 70){
+			damage_percent = 70;
+		}else{
+			damage_percent = 35 + (level * 2);
+		}
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			float damage_without_rase = Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken);
+			
+			float damage_with_rase =damage_without_rase + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE , damage_without_rase); 
+			
+			w.decreaseHP(Math.round(damage_with_rase));
+			
+			damage_done_this_fight =Math.round(damage_without_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase));
+			
+		}
+		else if(!has_field_advantage){
+			
+			int damage_without_rase =Math.round( Percent.getPercent(damage_percent, damage_taken));
+		
+			float dmg  = Percent.getPercent (35 + (Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE, 35)) ,damage_taken);
+			
+			w.decreaseHP((int)dmg); //it works only by casting to int not using Math.round()';
+			
+			
+			damage_done_this_fight = damage_without_rase;
+		}
+		
+		return damage_done_this_fight;
+
+		
 		
 	}
 	
-	public void deflect(Rogue r ,int field ,int damage_taken){
+	public int deflect(Rogue r ,int field ,int damage_taken){
+		
+		int damage_done_this_fight = 0;
+		int damage_percent = 0 ;
+		
+		if(35 + (level * 2) > 70){
+			damage_percent = 70;
+		}else{
+			damage_percent = 35 + (level * 2);
+		}
+		
+		has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			float damage_without_rase = Percent.getPercent( Percent.getPercent(110, damage_percent), damage_taken);
+			
+			float damage_with_rase =damage_without_rase + Percent.getPercent(ROGUE_DEFLECT_DMG_INCREASE , damage_without_rase); 
+			
+			r.decreaseHP(Math.round(damage_with_rase));
+			
+			damage_done_this_fight =Math.round(damage_without_rase + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_without_rase));
+			
+		}
+		else if(!has_field_advantage){
+			
+			int damage_without_rase =Math.round( Percent.getPercent(damage_percent, damage_taken));
+		
+			float dmg  = Percent.getPercent (35 + (Percent.getPercent(ROGUE_DEFLECT_DMG_INCREASE, 35)) ,damage_taken);
+			
+			r.decreaseHP((int)dmg); //it works only by casting to int not using Math.round()';
+			
+			
+			damage_done_this_fight = damage_without_rase;
+		}
+		
+		return damage_done_this_fight;
+
+		
 		
 	}
 	
