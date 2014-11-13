@@ -1,6 +1,7 @@
 package eroi;
 
-public abstract class Hero {
+
+public abstract class Hero  { 
 	
 	public int level;
 	public int XP;
@@ -11,6 +12,31 @@ public abstract class Hero {
 	public boolean incapacitate ;
 	public int x;
 	public int y;
+	
+	
+	public void damages(Hero h ,int field , int round){
+		h.isDamagedBy(this, field, round);
+	}
+	
+	public void isDamagedBy(Hero h , int field , int round ){
+		
+	}
+	
+	public void isDamagedBy(Pyromancer p , int field ,int round ){
+		
+	}
+	
+	public void isDamagedBy(Wizard w ,int field ,int round){
+		
+	}
+	
+	public void isDamagedBy(Knight k ,int field ,int round){
+		
+	}
+	
+	public void isDamagedBy(Rogue r, int field, int round){
+		
+	}
 	
 	public int increaseHP(int value ){
 		return 0;
@@ -75,10 +101,5 @@ public abstract class Hero {
 	public boolean isIncapacitated(){
 		return this.incapacitate;
 	}
-	
-	public abstract void fightsWith(Pyromancer p,int field, int round);
-	public abstract void fightsWith(Knight k ,int field, int round);
-	public abstract void fightsWith(Wizard w,int field, int round);
-	public abstract void fightsWith(Rogue r ,int field, int round);
 	
 }

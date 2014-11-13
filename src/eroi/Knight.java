@@ -1,9 +1,9 @@
 package eroi;
 
-import field.Field;
 import Calculus.Percent;
+import field.Field;
 
-public final class Knight extends Hero{
+public final class Knight extends Hero {
 	
 	public static final int HP_INCREMENT = 80;
 	
@@ -34,6 +34,45 @@ public final class Knight extends Hero{
 		this.XP = 0;
 		this.HP = 900;
 		this.maxHP = 900;
+		
+	}
+	
+	public void damages(Hero h , int field , int round ){
+		h.isDamagedBy(this, field, round);
+	}
+	
+	
+	public void isDamagedBy(Pyromancer p , int field , int round ){
+		
+		this.execute(p, field);
+		this.slam(p, field);
+		
+		p.fireblast(this, field);
+		p.ignite(this,field);
+		
+	}
+	
+	public void isDamagedBy(Wizard w ,int field ,int round ){
+		
+		float dmg_execute = this.execute(w, field);
+		float dmg_slam = this.slam(w, field);
+		
+		w.drain(this, field); 
+		w.deflect(this, field, dmg_execute , dmg_slam);
+		
+	}
+	
+	public void isDamagedBy(Knight k , int field ,int round ){
+		
+		this.execute(k, field);
+		this.slam(k, field);
+		
+		k.execute(this, field);
+		k.slam(k, field);
+		
+	}
+	
+	public void isDamagedBy(Rogue r ,int field ,int round){
 		
 	}
 	

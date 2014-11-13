@@ -1,5 +1,5 @@
 package main;
-import java.io.BufferedOutputStream;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -24,8 +24,8 @@ public class Main  {
 	private static BufferedWriter buff_out;
 	private static int x ;
 	private static int y ;
-	private static char[][] map ;
-	
+	private static char[][] map_init ;
+	private static int[][] map;
 	
 	
 	private static int numberOfCharacters;
@@ -62,14 +62,15 @@ public class Main  {
 			tokenizer.nextToken();
 			y = (int)tokenizer.nval;
 			
-			map = new char[x][y];
+			map = new int[x][y];
+			map_init = new char[x][y];
 
 			int i = 0;
 			for(i=0 , current = tokenizer.nextToken() ; i < x ; i++){
 				String linie = tokenizer.sval; 
 				tokenizer.nextToken();
 				for(int j = 0 ; j < linie.length() ; j ++){
-					map[i][j] = linie.charAt(j);
+					map_init[i][j] = linie.charAt(j);
 				}
 			}
 			
@@ -138,6 +139,21 @@ public class Main  {
 			System.out.println("W1 = "+w1.HP );
 		}
 
+		/*
+		 * Create the map matrix
+		 */
+		for(int i = 0 ; i < x ; i++){
+			for(int j = 0 ; j < y ; j++){
+				if(map_init[i][j] == 'W')
+					map[i][j] = Field.WOODS;
+				else if (map_init[i][j] == 'D')
+					map[i][j] = Field.DESERT;
+				else if (map_init[i][j] == 'L')
+					map[i][j] = Field.LAND;
+				else if (map_init[i][j] == 'V')
+					map[i][j] = Field.VOLCANIC;
+			}
+		}
 		
 		/*
 		 * Instantiate the heros vector
@@ -217,9 +233,12 @@ public class Main  {
 			}
 			
 			for(int j = 0 ; j < numberOfCharacters-1 ; j++){
-				for(int k = 1 ; k < numberOfCharacters ; k++){
+				for(int k = j+1 ; k < numberOfCharacters ; k++){
+					
+					if(heros[j].isDead() || heros[k].isDead())
+						break;
 					if(heros[j].x == heros[k].x && heros[j].y == heros[k].y){
-//						heros[i].fightsWith(heros[j],map[heros[i].x][heros[i].y],i );
+						heros[j].damages(heros[k],map[heros[i].x][heros[i].y],i );
 					}
 				}
 			}

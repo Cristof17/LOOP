@@ -3,7 +3,7 @@ package eroi;
 import Calculus.Percent;
 import field.Field;
 
-public class Pyromancer extends Hero{
+public class Pyromancer extends Hero {
 
 	public static final int HP_INCREMENT = 50;
 	
@@ -37,7 +37,32 @@ public class Pyromancer extends Hero{
 	}
 	
 	
-	public void fightsWith(Knight k , int field , int round){
+	public void damages(Hero h , int field , int round ){
+		h.isDamagedBy(this, field, round);
+	}
+	
+	
+	public void isDamagedBy(Pyromancer p , int field , int round ){
+		
+		this.fireblast(p, field);
+		this.ignite(p, field);
+		
+		p.fireblast(this, field);
+		p.ignite(this, field);
+		
+	}
+	
+	public void isDamagedBy(Wizard w ,int field ,int round ){
+		
+		float dmg_fireblast = this.fireblast(w, field);
+		float dmg_ignite = this.ignite(w, field);
+		
+		w.drain(this, field);
+		w.deflect(this, field, dmg_fireblast, dmg_ignite);
+		
+	}
+	
+	public void isDamagedBy(Knight k , int field ,int round ){
 		
 		this.fireblast(k, field);
 		this.ignite(k, field);
@@ -47,20 +72,34 @@ public class Pyromancer extends Hero{
 		
 	}
 	
+	public void isDamagedBy(Rogue r ,int field ,int round){
+		
+	}
+
 	
-	public void fightsWith(Pyromancer p , int field , int round){
-		
-		this.fireblast(p, field);
-		this.ignite(p, field);
-		
-		p.fireblast(this, field);
-		p.ignite(this, field);
+	
+	
+	public void fightsWith(Knight k , int field , int round){
 		
 		
 		
 	}
 	
-	public void fightsWith(Wizard k , int field ,int round){
+	
+	public void fightsWith(Pyromancer p , int field , int round){
+		
+		p.fireblast(this, field);
+		p.ignite(this, field);
+		
+		this.fireblast(p, field);
+		this.ignite(p, field);
+		
+		
+	}
+	
+	public void fightsWith(Wizard w , int field ,int round){
+		
+		
 		
 	}
 	

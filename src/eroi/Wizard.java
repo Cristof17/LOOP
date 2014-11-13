@@ -39,6 +39,47 @@ public class Wizard extends Hero {
 		
 	}
 	
+	public void damages(Hero h , int field , int round ){
+		h.isDamagedBy(this, field, round);
+	}
+	
+	
+	public void isDamagedBy(Pyromancer p , int field , int round ){
+		
+		float dmg_fireblast = p.fireblast(this, field);
+		float dmg_ignite = p.ignite(this, field);
+		
+		this.drain(p, field); 
+		this.deflect(p, field, dmg_fireblast , dmg_ignite);
+		
+	}
+	
+	public void isDamagedBy(Wizard w ,int field ,int round ){
+		
+		this.drain(w, field);
+		w.drain(this, field);
+		
+	}
+	
+	public void isDamagedBy(Knight k , int field ,int round ){
+		
+		int damage_taken_by_execute = k.execute(this, field);
+		int damage_taken_by_slam = k.slam(this, field);
+		
+		this.drain(k,field);
+		this.deflect(k, field,damage_taken_by_execute,
+							  damage_taken_by_slam);
+		
+		
+	}
+	
+	public void isDamagedBy(Rogue r ,int field ,int round){
+		
+	}
+
+	
+	
+	
 	public void fightsWith(Knight k , int field , int round){
 	
 		int damage_taken_by_execute = k.execute(this, field);

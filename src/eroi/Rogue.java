@@ -1,6 +1,7 @@
 package eroi;
 
-public class Rogue extends Hero{
+
+public class Rogue extends Hero {
 
 	public static final int HP_INCREMENT = 40;
 	
@@ -25,6 +26,27 @@ public class Rogue extends Hero{
 		this.backstab_hits = 0; 
 	}
 	
+	public void damages(Hero h , int field , int round ){
+		h.isDamagedBy(this, field, round);
+	}
+	
+	
+	public void isDamagedBy(Pyromancer h , int field , int round ){
+		
+	}
+	
+	public void isDamagedBy(Wizard w ,int field ,int round ){
+		
+	}
+	
+	public void isDamagedBy(Knight k , int field ,int round ){
+		
+	}
+	
+	public void isDamagedBy(Rogue r ,int field ,int round){
+		
+	}
+
 	
 	
 	public void backstab(Pyromancer p , int field){
@@ -60,38 +82,6 @@ public class Rogue extends Hero{
 	}
 
 	public void paralysis(Rogue r , int field){
-		
-	}
-
-
-
-	@Override
-	public void fightsWith(Pyromancer p, int field, int round) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void fightsWith(Knight k, int field, int round) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void fightsWith(Wizard w, int field, int round) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void fightsWith(Rogue r, int field, int round) {
-		// TODO Auto-generated method stub
 		
 	}
 
