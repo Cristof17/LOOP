@@ -87,15 +87,6 @@ public abstract class Hero  {
 		return HP <= 0 ;
 	}
 	
-	public void wins(Hero enemy){
-		this.HP = maxHP;
-		calculateLevel(enemy);
-	}
-	
-	public void calculateLevel(Hero loser){
-		this.XP = loser.XP + Math.max(0, 200 - (this.level - loser.level ) *40);
-	}
-	
 	public boolean isIncapacitated(){
 		return this.incapacitate;
 	}

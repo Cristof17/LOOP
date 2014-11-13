@@ -1,6 +1,5 @@
 package eroi;
 
-import javax.swing.text.html.MinimalHTMLWriter;
 
 import Calculus.Percent;
 import field.Field;
@@ -77,44 +76,6 @@ public class Wizard extends Hero {
 		
 	}
 
-	
-	
-	
-	public void fightsWith(Knight k , int field , int round){
-	
-		int damage_taken_by_execute = k.execute(this, field);
-		int damage_taken_by_slam = k.slam(this, field);
-		
-		this.drain(k,field);
-		this.deflect(k, field,damage_taken_by_execute,
-							  damage_taken_by_slam);
-		
-	}
-	
-	
-	public void fightsWith(Pyromancer p , int field , int round){
-		
-		float dmg_fireblast = p.fireblast(this, field);
-		float dmg_ignite = p.ignite(this, field);
-		
-		this.drain(p, field);
-		int dmg = Math.round(dmg_fireblast +dmg_ignite ); 
-		this.deflect(p, field, dmg_fireblast , dmg_ignite);
-		
-	}
-	
-	public void fightsWith(Wizard w , int field , int round){
-		
-		this.drain(w, field);
-		
-		w.drain(this, field);
-		
-	}
-	
-	public void fightsWith(Rogue r , int field , int round){
-		
-	}
-	
 	
 	public float drain(Pyromancer p , int field){
 	

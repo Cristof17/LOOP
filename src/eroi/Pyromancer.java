@@ -76,42 +76,11 @@ public class Pyromancer extends Hero {
 		
 	}
 
-	
-	
-	
-	public void fightsWith(Knight k , int field , int round){
-		
-		
-		
-	}
-	
-	
-	public void fightsWith(Pyromancer p , int field , int round){
-		
-		p.fireblast(this, field);
-		p.ignite(this, field);
-		
-		this.fireblast(p, field);
-		this.ignite(p, field);
-		
-		
-	}
-	
-	public void fightsWith(Wizard w , int field ,int round){
-		
-		
-		
-	}
-	
-	public void fightsWith(Rogue k , int field , int round){
-		
-	}
-
-	
-	
 	public float fireblast(Pyromancer p ,int field){
 		
 		int damage_done_this_fight = 0;
+		
+		has_field_advantage = checkField(field);
 		
 		if(has_field_advantage){
 			
@@ -141,10 +110,14 @@ public class Pyromancer extends Hero {
 		}
 		
 		return damage_done_this_fight ;
+	
 		
 	}
 	
-	public void fireblast(Knight k ,int field){
+	public float fireblast(Knight k ,int field){
+		int damage_done_this_fight = 0;
+		
+		has_field_advantage = checkField(field);
 		
 		if(has_field_advantage){
 			
@@ -155,19 +128,26 @@ public class Pyromancer extends Hero {
 		
 			k.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
+			
+			damage_done_this_fight = field_increased_dmg ;
 		
 		}
 		
 		else if(!has_field_advantage){
-			
 		
 			k.decreaseHP(Math.round( FIREBLAST_BASE_DMG +
 					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
 					(level * FIREBLAST_LVL_INCREASE))));
 		
+			damage_done_this_fight =  Math.round( FIREBLAST_BASE_DMG +
+					Percent.getPercent(KNIGHT_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
+					(level * FIREBLAST_LVL_INCREASE)));
+			
+			damage_done_this_fight = Math.round(FIREBLAST_BASE_DMG + (level * FIREBLAST_LVL_INCREASE)); 
 		}
-
 		
+		return damage_done_this_fight ;
+			
 	}
 	
 	public float fireblast(Wizard w , int field){
@@ -209,8 +189,12 @@ public class Pyromancer extends Hero {
 		
 	}
 	
-	public void fireblast(Rogue r ,int field){
+	public float fireblast(Rogue r ,int field){
 		
+		
+		int damage_done_this_fight = 0;
+		
+		has_field_advantage = checkField(field);
 		
 		if(has_field_advantage){
 			
@@ -221,44 +205,65 @@ public class Pyromancer extends Hero {
 		
 			r.decreaseHP(Math.round( field_increased_dmg +
 					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, field_increased_dmg)));
+			
+			damage_done_this_fight = field_increased_dmg ;
 		
 		}
 		
 		else if(!has_field_advantage){
-			
 		
 			r.decreaseHP(Math.round( FIREBLAST_BASE_DMG +
 					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
 					(level * FIREBLAST_LVL_INCREASE))));
 		
+			damage_done_this_fight =  Math.round( FIREBLAST_BASE_DMG +
+					Percent.getPercent(ROGUE_FIREBLAST_DMG_INCREASE, FIREBLAST_BASE_DMG +
+					(level * FIREBLAST_LVL_INCREASE)));
+			
+			damage_done_this_fight = Math.round(FIREBLAST_BASE_DMG + (level * FIREBLAST_LVL_INCREASE)); 
 		}
 		
-		
+		return damage_done_this_fight ;
+	
 	}
 	
-	public void ignite(Pyromancer p ,int field){
+	public float ignite(Pyromancer p ,int field){
+		
+		has_field_advantage = checkField(field);
+		
+		float damage_done_this_fight  = 0 ;
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg =Math.round( IGNITE_BASE_DMG +
+			int field_increased_dmg_base = Math.round( IGNITE_BASE_DMG +
 								   (level * IGNITE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)));
-										   
+								   Math.round( Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE))));
+									
 		
-			p.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, field_increased_dmg)));
+			p.decreaseHP(Math.round( field_increased_dmg_base +
+					Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, field_increased_dmg_base)));
+			
+			
+			p.setDamageOverTime(IGNITE_ROUND_DAMAGE +
+								Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE +(level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))), 2, false);
 		
+			damage_done_this_fight = field_increased_dmg_base;
 		}
 		
 		else if(!has_field_advantage){
 			
 		
-			p.decreaseHP(Math.round( IGNITE_BASE_DMG +
-					Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG +
-					(level * IGNITE_LVL_INCREASE))));
+			int dmg_base = Math.round( IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)); 
+			
+			p.decreaseHP(Math.round(dmg_base + Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
+			
+			
+			damage_done_this_fight =  dmg_base ;
 		
-		}
+		}		
 		
+		
+		return damage_done_this_fight ;
 		
 	}
 
@@ -266,13 +271,13 @@ public class Pyromancer extends Hero {
 		
 		has_field_advantage = checkField(field);
 		
-		int damage_done_this_fight  = 0 ;
+		float damage_done_this_fight  = 0 ;
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg_base =Math.round( IGNITE_BASE_DMG +
+			int field_increased_dmg_base = Math.round( IGNITE_BASE_DMG +
 								   (level * IGNITE_LVL_INCREASE)+
-								   Math.round( Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE))));
+								   Math.round( Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE))));
 									
 		
 			k.decreaseHP(Math.round( field_increased_dmg_base +
@@ -292,11 +297,8 @@ public class Pyromancer extends Hero {
 			
 			k.decreaseHP(Math.round(dmg_base + Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
 			
-			int dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE)); 
 			
-			k.decreaseHP(Math.round( dmg_round + Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, dmg_round)));
-			
-			damage_done_this_fight =  dmg_base + dmg_round ;
+			damage_done_this_fight =  dmg_base ;
 		
 		}		
 		
@@ -346,29 +348,44 @@ public class Pyromancer extends Hero {
 		
 	}
 	
-	public void ignite(Rogue r ,int field){
+	public float ignite(Rogue r ,int field){
 		
+		
+		has_field_advantage = checkField(field);
+		
+		float damage_done_this_fight  = 0 ;
 		
 		if(has_field_advantage){
 			
-			int field_increased_dmg =Math.round( IGNITE_BASE_DMG +
+			int field_increased_dmg_base = Math.round( IGNITE_BASE_DMG +
 								   (level * IGNITE_LVL_INCREASE)+
-								   Percent.getPercent(FIELD_DMG_INCREASE,IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)));
-										   
+								   Math.round( Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE))));
+									
 		
-			r.decreaseHP(Math.round( field_increased_dmg +
-					Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, field_increased_dmg)));
+			r.decreaseHP(Math.round( field_increased_dmg_base +
+					Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, field_increased_dmg_base)));
+			
+			
+			r.setDamageOverTime(IGNITE_ROUND_DAMAGE +
+								Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE +(level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))), 2, false);
 		
+			damage_done_this_fight = field_increased_dmg_base;
 		}
 		
 		else if(!has_field_advantage){
 			
 		
-			r.decreaseHP(Math.round( IGNITE_BASE_DMG +
-					Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG +
-					(level * IGNITE_LVL_INCREASE))));
+			int dmg_base = Math.round( IGNITE_BASE_DMG + (level * IGNITE_LVL_INCREASE)); 
+			
+			r.decreaseHP(Math.round(dmg_base + Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
+			
+			
+			damage_done_this_fight =  dmg_base ;
 		
-		}
+		}		
+		
+		
+		return damage_done_this_fight ;
 		
 	}
 	
