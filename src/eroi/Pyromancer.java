@@ -243,9 +243,10 @@ public class Pyromancer extends Hero {
 			p.decreaseHP(Math.round( field_increased_dmg_base +
 					Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, field_increased_dmg_base)));
 			
+			int field_increased_dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE)+
+											Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_LVL_INCREASE))));
 			
-			p.setDamageOverTime(IGNITE_ROUND_DAMAGE +
-								Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE +(level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))), 2, false);
+			p.setDamageOverTime(Math.round(field_increased_dmg_round + Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, field_increased_dmg_round)),2,false);
 		
 			damage_done_this_fight = field_increased_dmg_base;
 		}
@@ -257,7 +258,10 @@ public class Pyromancer extends Hero {
 			
 			p.decreaseHP(Math.round(dmg_base + Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
 			
-			
+			int dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE) +
+							Math.round(Percent.getPercent(PYROMANCER_IGNITE_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))));
+		
+			p.setDamageOverTime(dmg_round, 2, false);
 			damage_done_this_fight =  dmg_base ;
 		
 		}		
@@ -284,8 +288,10 @@ public class Pyromancer extends Hero {
 					Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, field_increased_dmg_base)));
 			
 			
-			k.setDamageOverTime(IGNITE_ROUND_DAMAGE +
-								Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE +(level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))), 2, false);
+			int field_increased_dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE)+
+					Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_LVL_INCREASE))));
+
+			k.setDamageOverTime(Math.round(field_increased_dmg_round + Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, field_increased_dmg_round)),2,false);
 		
 			damage_done_this_fight = field_increased_dmg_base;
 		}
@@ -297,6 +303,11 @@ public class Pyromancer extends Hero {
 			
 			k.decreaseHP(Math.round(dmg_base + Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
 			
+			int dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE) +
+					Math.round(Percent.getPercent(KNIGHT_IGNITE_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))));
+
+			k.setDamageOverTime(dmg_round, 2, false);
+
 			
 			damage_done_this_fight =  dmg_base ;
 		
@@ -325,9 +336,11 @@ public class Pyromancer extends Hero {
 					Percent.getPercent(WIZARD_IGNITE_DMG_INCREASE, field_increased_dmg_base)));
 			
 			
-			w.setDamageOverTime(IGNITE_ROUND_DAMAGE +
-								Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE +(level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))), 2, false);
-		
+			int field_increased_dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE)+
+					Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_LVL_INCREASE))));
+
+			w.setDamageOverTime(Math.round(field_increased_dmg_round + Percent.getPercent(WIZARD_IGNITE_DMG_INCREASE, field_increased_dmg_round)),2,false);
+			
 			damage_done_this_fight = field_increased_dmg_base;
 		}
 		
@@ -338,6 +351,11 @@ public class Pyromancer extends Hero {
 			
 			w.decreaseHP(Math.round(dmg_base + Percent.getPercent(WIZARD_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
 			
+			int dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE) +
+					Math.round(Percent.getPercent(WIZARD_IGNITE_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))));
+
+			w.setDamageOverTime(dmg_round, 2, false);
+
 			
 			damage_done_this_fight =  dmg_base ;
 		
@@ -366,8 +384,10 @@ public class Pyromancer extends Hero {
 					Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, field_increased_dmg_base)));
 			
 			
-			r.setDamageOverTime(IGNITE_ROUND_DAMAGE +
-								Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE +(level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))), 2, false);
+			int field_increased_dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE)+
+					Math.round(Percent.getPercent(FIELD_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_LVL_INCREASE))));
+
+			r.setDamageOverTime(Math.round(field_increased_dmg_round + Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, field_increased_dmg_round)),2,false);
 		
 			damage_done_this_fight = field_increased_dmg_base;
 		}
@@ -379,7 +399,11 @@ public class Pyromancer extends Hero {
 			
 			r.decreaseHP(Math.round(dmg_base + Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, IGNITE_BASE_DMG )));
 			
-			
+			int dmg_round = Math.round(IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE) +
+					Math.round(Percent.getPercent(ROGUE_IGNITE_DMG_INCREASE, IGNITE_ROUND_DAMAGE + (level * IGNITE_ROUND_DAMAGE_LVL_INCREASE))));
+
+			r.setDamageOverTime(dmg_round, 2, false);
+
 			damage_done_this_fight =  dmg_base ;
 		
 		}		
