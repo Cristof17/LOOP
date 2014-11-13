@@ -7,12 +7,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-import eroi.Hero;
-import eroi.Knight;
-import eroi.Pyromancer;
-import eroi.Rogue;
-import eroi.Wizard;
-import field.Field;
+//import eroi.Hero;
+//import eroi.Knight;
+//import eroi.Pyromancer;
+//import eroi.Rogue;
+//import eroi.Wizard;
+//import field.Field;
 
 
 public class Main  {
@@ -253,10 +253,7 @@ public class Main  {
 				builder.append(heros[j].HP + " ");
 				builder.append(heros[j].x + " ");
 				builder.append(heros[j].y);
-
-				if (j != numberOfCharacters - 1)
-					builder.append(System.getProperty("line.separator"));
-
+				builder.append(System.getProperty("line.separator"));
 				try {
 					buff_out.write(builder.toString());
 				} catch (IOException e) {
@@ -266,9 +263,7 @@ public class Main  {
 			}else{
 				builder.append(faction[j]+" ");
 				builder.append("dead");
-				
-				if(j != numberOfCharacters -1 )
-					builder.append(System.getProperty("line.separator"));
+				builder.append(System.getProperty("line.separator"));
 				
 					try {
 						buff_out.write(builder.toString());
@@ -278,6 +273,13 @@ public class Main  {
 					}
 				
 			}
+		}
+		
+		try {
+			buff_out.write(System.getProperty("line.separator"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		try {
