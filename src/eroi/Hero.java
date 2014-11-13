@@ -58,13 +58,11 @@ public abstract class Hero  {
 		return 0;
 	}
 	
-	public int increaseLevel(int value){
-		return 0;
-	}
-	
-	public int decreaseLevel(int value){
-		return 0;
-		
+	public int increaseLevel(){
+		if(this.XP >= 250 + this.level *50 ){
+			this.level++;
+		}
+	return this.level;
 	}
 	
 	

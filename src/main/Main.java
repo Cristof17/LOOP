@@ -232,21 +232,32 @@ public class Main  {
 				}
 			}
 			
+			/*
+			 * Fight fight fight fight fight fight fight
+			 */
 			for(int j = 0 ; j < numberOfCharacters-1 ; j++){
 				for(int k = j+1 ; k < numberOfCharacters ; k++){
-					
 					if(heros[j].isDead() || heros[k].isDead())
 						break;
 					if(heros[j].x == heros[k].x && heros[j].y == heros[k].y){
 						heros[j].damages(heros[k],map[heros[i].x][heros[i].y],i );
+						if(heros[j].isDead()){
+							heros[k].XP = heros[k].XP + Math.max(0, 200 - (heros[k].level - heros[j].level) *40);
+						}else if(heros[k].isDead()){
+							heros[j].XP = heros[j].XP + Math.max(0, 200 - (heros[k].level - heros[j].level) * 40);
+						}
+						heros[j].increaseLevel();
+						heros[k].increaseLevel();
+						
 					}
 				}
 			}
 		}
 		
 		
-		StringBuilder builder = new StringBuilder();
+		
 		for(int j = 0 ; j < numberOfCharacters ; j++){
+			StringBuilder builder = new StringBuilder();
 			if (!heros[j].isDead()) {
 				builder.append(faction[j] + " ");
 				builder.append(heros[j].level + " ");
