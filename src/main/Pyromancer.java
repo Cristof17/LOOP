@@ -74,6 +74,12 @@ public class Pyromancer extends Hero {
 	
 	public void isDamagedBy(Rogue r ,int field ,int round){
 		
+		this.fireblast(r, field);
+		this.ignite(r, field);
+		
+		r.backstab(this, field);
+		r.paralysis(this, field);
+		
 	}
 
 	public float fireblast(Pyromancer p ,int field){

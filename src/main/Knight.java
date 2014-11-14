@@ -74,6 +74,12 @@ public final class Knight extends Hero {
 	
 	public void isDamagedBy(Rogue r ,int field ,int round){
 		
+		this.execute(r, field);
+		this.slam(r, field);
+		
+		r.backstab(this, field);
+		r.paralysis(this, field);
+		
 	}
 	
 	

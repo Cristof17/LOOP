@@ -127,6 +127,17 @@ public class Main  {
 //		System.out.println (Math.round( 500 - (0.35 * 1.3 *500)) -27);
 //		System.out.println(Math.round( 500 - Percent.getPercent (35 + (Percent.getPercent(30, 35)) ,500) - 27));
 		
+//		Rogue r = new Rogue();
+//		Knight p = new Knight();
+//		
+//		r.damages(p, Field.DESERT, 2);
+//		
+//		System.out.println("R "+ r.HP + " \nP "+p.HP);
+//		
+//		r.damages(p, Field.DESERT, 2);
+//		
+//		System.out.println("R "+ r.HP + " \nP "+p.HP);
+//		
 		/*
 		 * Create the map matrix
 		 */
@@ -177,12 +188,10 @@ public class Main  {
 		
 		
 		for(int i = 0 ; i < numberOfRounds ; i++){
-			
-			
 			for(int j = 0 ; j < numberOfCharacters ; j++){
-				/*
-				 * apply DOT damage
-				 */
+				
+				heros[j].takeDamageOverTime();
+				
 			}
 			
 			for(int j = 0 ; j < numberOfCharacters ; j++){
