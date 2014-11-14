@@ -74,6 +74,12 @@ public class Wizard extends Hero {
 	
 	public void isDamagedBy(Rogue r ,int field ,int round){
 		
+		float damage_taken_by_backstab = r.backstab(this, field);
+		float damage_taken_by_paralysis = r.paralysis(this, field);
+		
+		this.drain(r, field);
+		this.deflect(r, field, damage_taken_by_backstab, damage_taken_by_paralysis);
+		
 	}
 
 	

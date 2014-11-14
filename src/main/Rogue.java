@@ -50,6 +50,12 @@ public class Rogue extends Hero {
 	
 	public void isDamagedBy(Wizard w ,int field ,int round ){
 		
+		float dmg_backstab = this.backstab(w, field);
+		float dmg_paralysis = this.paralysis(w, field);
+		
+		w.drain(this,field);
+		w.deflect(this, field, dmg_backstab, dmg_paralysis);
+		
 	}
 	
 	public void isDamagedBy(Knight k , int field ,int round ){
@@ -62,6 +68,12 @@ public class Rogue extends Hero {
 	}
 	
 	public void isDamagedBy(Rogue r ,int field ,int round){
+		
+		this.backstab(r, field);
+		this.paralysis(r, field);
+		
+		r.backstab(r, field);
+		r.paralysis(r, field);
 		
 	}
 
@@ -79,7 +91,7 @@ public class Rogue extends Hero {
 			
 			damage_done_this_fight = field_increased_damage ;
 			
-			if(hit_counter == 3 ){
+			if(hit_counter % 3 == 0 ){
 				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
 				this.hit_counter = 0 ;
 			}
@@ -90,12 +102,15 @@ public class Rogue extends Hero {
 			
 			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
 			
-			p.decreaseHP(damage);
+			p.decreaseHP(Math.round(Percent.getPercent(100 + PYROMANCER_BACKSTAB_DMG_INCREASE, damage)));
 			
 			damage_done_this_fight = damage ; 
 		}
 		
+		this.hit_counter ++ ;
+		
 		return damage_done_this_fight ;
+		
 		
 	}
 	
@@ -111,7 +126,7 @@ public class Rogue extends Hero {
 			
 			damage_done_this_fight = field_increased_damage ;
 			
-			if(hit_counter == 3 ){
+			if(hit_counter % 3 == 0 ){
 				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
 				this.hit_counter = 0 ;
 			}
@@ -127,15 +142,79 @@ public class Rogue extends Hero {
 			damage_done_this_fight = damage ; 
 		}
 		
+		this.hit_counter ++ ;
+		
 		return damage_done_this_fight ;
 		
 	}
 	
-	public void backstab(Wizard w , int field){
+	public float backstab(Wizard w , int field){
+		
+		float damage_done_this_fight = 0 ;
+		
+		boolean has_field_advantage = this.checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE)));
+			
+			damage_done_this_fight = field_increased_damage ;
+			
+			if(hit_counter % 3 == 0 ){
+				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
+				this.hit_counter = 0 ;
+			}
+			
+			w.decreaseHP(Math.round(Percent.getPercent(100 + WIZARD_BACKSTAB_DMG_INCREASE,field_increased_damage)));
+			
+		}else{
+			
+			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
+			
+			w.decreaseHP(Math.round(Percent.getPercent(100 + WIZARD_BACKSTAB_DMG_INCREASE, damage)));
+			
+			damage_done_this_fight = damage ; 
+		}
+		
+		this.hit_counter ++ ;
+		
+		return damage_done_this_fight ;
+
 		
 	}
 	
-	public void backstab(Rogue r , int field ){
+	public float backstab(Rogue r , int field ){
+		
+		float damage_done_this_fight = 0 ;
+		
+		boolean has_field_advantage = this.checkField(field);
+		
+		if(has_field_advantage){
+			
+			int field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE)));
+			
+			damage_done_this_fight = field_increased_damage ;
+			
+			if(hit_counter % 3 == 0 ){
+				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
+				this.hit_counter = 0 ;
+			}
+			
+			r.decreaseHP(Math.round(Percent.getPercent(100 + ROGUE_BACKSTAB_DMG_INCREASE,field_increased_damage)));
+			
+		}else{
+			
+			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
+			
+			r.decreaseHP(Math.round(Percent.getPercent(100 + ROGUE_BACKSTAB_DMG_INCREASE, damage)));
+			
+			damage_done_this_fight = damage ; 
+		}
+		
+		this.hit_counter ++ ;
+		
+		return damage_done_this_fight ;
+
 		
 	}
 	
@@ -208,11 +287,69 @@ public class Rogue extends Hero {
 		
 	}
 
-	public void paralysis(Wizard w , int field){
+	public float paralysis(Wizard w , int field){
+		
+		float damage_done_this_fight = 0 ;
+		
+		boolean has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			float field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE)));
+			
+			w.decreaseHP(Math.round(Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE, field_increased_damage )));
+			
+			w.setDamageOverTime(Math.round(Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE, field_increased_damage)), 6 , true);
+			
+			damage_done_this_fight = field_increased_damage;
+			
+		}else{
+			
+			float damage = PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_BASE_DAMAGE);
+			
+			w.decreaseHP(Math.round( Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE, damage)));
+			
+			w.setDamageOverTime(Math.round(Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE , damage)), 6, true);
+			
+			damage_done_this_fight = damage; 
+			
+		}
+		
+		return damage_done_this_fight;
+
 		
 	}
 
-	public void paralysis(Rogue r , int field){
+	public float paralysis(Rogue r , int field){
+		
+		float damage_done_this_fight = 0 ;
+		
+		boolean has_field_advantage = checkField(field);
+		
+		if(has_field_advantage){
+			
+			float field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE)));
+			
+			r.decreaseHP(Math.round(Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE, field_increased_damage )));
+			
+			r.setDamageOverTime(Math.round(Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE, field_increased_damage)), 6 , true);
+			
+			damage_done_this_fight = field_increased_damage;
+			
+		}else{
+			
+			float damage = PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_BASE_DAMAGE);
+			
+			r.decreaseHP(Math.round( Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE, damage)));
+			
+			r.setDamageOverTime(Math.round(Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE , damage)), 6, true);
+			
+			damage_done_this_fight = damage; 
+			
+		}
+		
+		return damage_done_this_fight;
+
 		
 	}
 	
