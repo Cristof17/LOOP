@@ -87,12 +87,12 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			int field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
 			
 			damage_done_this_fight = field_increased_damage ;
 			
 			if(hit_counter % 3 == 0 ){
-				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
+				field_increased_damage  = Percent.getPercent(150 , field_increased_damage);
 				this.hit_counter = 0 ;
 			}
 			
@@ -100,7 +100,7 @@ public class Rogue extends Hero {
 			
 		}else{
 			
-			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
+			float damage = BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE);
 			
 			p.decreaseHP(Math.round(Percent.getPercent(100 + PYROMANCER_BACKSTAB_DMG_INCREASE, damage)));
 			
@@ -122,12 +122,12 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			int field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
 			
 			damage_done_this_fight = field_increased_damage ;
 			
 			if(hit_counter % 3 == 0 ){
-				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
+				field_increased_damage  = Percent.getPercent(150 , field_increased_damage);
 				this.hit_counter = 0 ;
 			}
 			
@@ -135,7 +135,7 @@ public class Rogue extends Hero {
 			
 		}else{
 			
-			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
+			float damage = BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE);
 			
 			k.decreaseHP(Math.round(Percent.getPercent(100 + KNIGHT_BACKSTAB_DMG_INCREASE, damage)));
 			
@@ -156,12 +156,12 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			int field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
 			
 			damage_done_this_fight = field_increased_damage ;
 			
 			if(hit_counter % 3 == 0 ){
-				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
+				field_increased_damage  = Percent.getPercent(150 , field_increased_damage);
 				this.hit_counter = 0 ;
 			}
 			
@@ -169,7 +169,7 @@ public class Rogue extends Hero {
 			
 		}else{
 			
-			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
+			float damage = BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE);
 			
 			w.decreaseHP(Math.round(Percent.getPercent(100 + WIZARD_BACKSTAB_DMG_INCREASE, damage)));
 			
@@ -179,7 +179,6 @@ public class Rogue extends Hero {
 		this.hit_counter ++ ;
 		
 		return damage_done_this_fight ;
-
 		
 	}
 	
@@ -191,12 +190,12 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			int field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
 			
 			damage_done_this_fight = field_increased_damage ;
 			
 			if(hit_counter % 3 == 0 ){
-				field_increased_damage  = Math.round(Percent.getPercent(150 , field_increased_damage));
+				field_increased_damage  = Percent.getPercent(150 , field_increased_damage);
 				this.hit_counter = 0 ;
 			}
 			
@@ -204,7 +203,7 @@ public class Rogue extends Hero {
 			
 		}else{
 			
-			int damage = Math.round(BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE));
+			float damage = BACKSTAB_BASE_DAMAGE + (level * BACKSTAB_LVL_INCREASE);
 			
 			r.decreaseHP(Math.round(Percent.getPercent(100 + ROGUE_BACKSTAB_DMG_INCREASE, damage)));
 			
@@ -214,7 +213,6 @@ public class Rogue extends Hero {
 		this.hit_counter ++ ;
 		
 		return damage_done_this_fight ;
-
 		
 	}
 	
@@ -230,7 +228,7 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			float field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE));
 			
 			p.decreaseHP(Math.round(Percent.getPercent(100 + PYROMANCER_PARALYSIS_DMG_INCREASE, field_increased_damage )));
 			
@@ -244,7 +242,7 @@ public class Rogue extends Hero {
 			
 			p.decreaseHP(Math.round( Percent.getPercent(100 + PYROMANCER_PARALYSIS_DMG_INCREASE, damage)));
 			
-			p.setDamageOverTime(Math.round(Percent.getPercent(100 + PYROMANCER_PARALYSIS_DMG_INCREASE , damage)), 6, true);
+			p.setDamageOverTime(Math.round(Percent.getPercent(100 + PYROMANCER_PARALYSIS_DMG_INCREASE , damage)), 3, true);
 			
 			damage_done_this_fight = damage; 
 			
@@ -262,7 +260,7 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			float field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE));
 			
 			k.decreaseHP(Math.round(Percent.getPercent(100 + KNIGHT_PARALYSIS_DMG_INCREASE, field_increased_damage )));
 			
@@ -276,7 +274,7 @@ public class Rogue extends Hero {
 			
 			k.decreaseHP(Math.round( Percent.getPercent(100 + KNIGHT_PARALYSIS_DMG_INCREASE, damage)));
 			
-			k.setDamageOverTime(Math.round(Percent.getPercent(100 + KNIGHT_PARALYSIS_DMG_INCREASE , damage)), 6, true);
+			k.setDamageOverTime(Math.round(Percent.getPercent(100 + KNIGHT_PARALYSIS_DMG_INCREASE , damage)), 3, true);
 			
 			damage_done_this_fight = damage; 
 			
@@ -295,7 +293,7 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			float field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE));
 			
 			w.decreaseHP(Math.round(Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE, field_increased_damage )));
 			
@@ -309,7 +307,7 @@ public class Rogue extends Hero {
 			
 			w.decreaseHP(Math.round( Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE, damage)));
 			
-			w.setDamageOverTime(Math.round(Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE , damage)), 6, true);
+			w.setDamageOverTime(Math.round(Percent.getPercent(100 + WIZARD_PARALYSIS_DMG_INCREASE , damage)), 3, true);
 			
 			damage_done_this_fight = damage; 
 			
@@ -328,7 +326,7 @@ public class Rogue extends Hero {
 		
 		if(has_field_advantage){
 			
-			float field_increased_damage = Math.round(Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE)));
+			float field_increased_damage = Percent.getPercent(100 + FIELD_INCREASED_DMG, PARALYSIS_BASE_DAMAGE + (level * PARALYSIS_LVL_INCREASE));
 			
 			r.decreaseHP(Math.round(Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE, field_increased_damage )));
 			
@@ -342,14 +340,13 @@ public class Rogue extends Hero {
 			
 			r.decreaseHP(Math.round( Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE, damage)));
 			
-			r.setDamageOverTime(Math.round(Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE , damage)), 6, true);
+			r.setDamageOverTime(Math.round(Percent.getPercent(100 + ROGUE_PARALYSIS_DMG_INCREASE , damage)), 3, true);
 			
 			damage_done_this_fight = damage; 
 			
 		}
 		
 		return damage_done_this_fight;
-
 		
 	}
 	

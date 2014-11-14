@@ -96,9 +96,10 @@ public class Wizard extends Hero {
 			
 			p.decreaseHP(damage);
 			
-			int procent_without_race = 20 + (level * 5) +(int) (0.1 * (20 + (level * 5)));
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * p.maxHP, p.HP)+
-										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(int)( procent_without_race * Math.min(0.3 * p.maxHP, p.HP)))));
+			float procent_without_race = 20 + (level * 5) +(float) (0.1 * (20 + (level * 5)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float)Math.min(0.3 * p.maxHP, p.HP)+
+										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(float)( procent_without_race * Math.min(0.3 * p.maxHP, p.HP)))));
 			
 		}
 		
@@ -106,13 +107,13 @@ public class Wizard extends Hero {
 			
 			procent = Percent.getPercent(100 + PYROMANCER_DRAIN_DMG_INCREASE , 20 + (level * PROCENT_INCREASE));
 			
-			int damage = (int) Math.round(Percent.getPercent(procent ,(int) Math.min(0.3 * p.maxHP, p.HP)));
-			
+			int damage = Math.round(Percent.getPercent(procent ,(float)Math.min(0.3 * p.maxHP, p.HP)));
 			
 			p.decreaseHP(damage); 
 			
 			int procent_without_race = 20 + (level * PROCENT_INCREASE);
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * p.maxHP, p.HP)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float) Math.min(0.3 * p.maxHP, p.HP)));
 		
 		}
 		
@@ -138,9 +139,10 @@ public class Wizard extends Hero {
 			
 			k.decreaseHP(damage);
 			
-			int procent_without_race = 20 + (level * 5) +(int) (0.1 * (20 + (level * 5)));
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * k.maxHP, k.HP)+
-										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(int)( procent_without_race * Math.min(0.3 * k.maxHP, k.HP)))));
+			float procent_without_race = 20 + (level * 5) +(float) (0.1 * (20 + (level * 5)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float)Math.min(0.3 * k.maxHP, k.HP)+
+										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(float)( procent_without_race * Math.min(0.3 * k.maxHP, k.HP)))));
 			
 		}
 		
@@ -148,13 +150,13 @@ public class Wizard extends Hero {
 			
 			procent = Percent.getPercent(100 + KNIGHT_DRAIN_DMG_INCREASE , 20 + (level * PROCENT_INCREASE));
 			
-			int damage = (int) Math.round(Percent.getPercent(procent ,(int) Math.min(0.3 * k.maxHP, k.HP)));
-			
+			int damage = Math.round(Percent.getPercent(procent ,(float)Math.min(0.3 * k.maxHP, k.HP)));
 			
 			k.decreaseHP(damage); 
 			
 			int procent_without_race = 20 + (level * PROCENT_INCREASE);
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * k.maxHP, k.HP)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float) Math.min(0.3 * k.maxHP, k.HP)));
 		
 		}
 		
@@ -180,9 +182,10 @@ public class Wizard extends Hero {
 			
 			w.decreaseHP(damage);
 			
-			int procent_without_race = 20 + (level * 5) +(int) (0.1 * (20 + (level * 5)));
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * w.maxHP, w.HP)+
-										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(int)( procent_without_race * Math.min(0.3 * w.maxHP, w.HP)))));
+			float procent_without_race = 20 + (level * 5) +(float) (0.1 * (20 + (level * 5)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float)Math.min(0.3 * w.maxHP, w.HP)+
+										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(float)( procent_without_race * Math.min(0.3 * w.maxHP, w.HP)))));
 			
 		}
 		
@@ -190,20 +193,17 @@ public class Wizard extends Hero {
 			
 			procent = Percent.getPercent(100 + WIZARD_DRAIN_DMG_INCREASE , 20 + (level * PROCENT_INCREASE));
 			
-			int damage = (int) Math.round(Percent.getPercent(procent ,(int) Math.min(0.3 * w.maxHP, w.HP)));
-			
+			int damage = Math.round(Percent.getPercent(procent ,(float)Math.min(0.3 * w.maxHP, w.HP)));
 			
 			w.decreaseHP(damage); 
 			
 			int procent_without_race = 20 + (level * PROCENT_INCREASE);
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * w.maxHP, w.HP)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float) Math.min(0.3 * w.maxHP, w.HP)));
 		
 		}
 		
 		return damage_done_this_fight; 
-		
-		
-		
 	}
 	
 	
@@ -223,9 +223,10 @@ public class Wizard extends Hero {
 			
 			r.decreaseHP(damage);
 			
-			int procent_without_race = 20 + (level * 5) +(int) (0.1 * (20 + (level * 5)));
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * r.maxHP, r.HP)+
-										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(int)( procent_without_race * Math.min(0.3 * r.maxHP, r.HP)))));
+			float procent_without_race = 20 + (level * 5) +(float) (0.1 * (20 + (level * 5)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float)Math.min(0.3 * r.maxHP, r.HP)+
+										  Percent.getPercent(FIELD_DAMAGE_INCREASE,(float)( procent_without_race * Math.min(0.3 * r.maxHP, r.HP)))));
 			
 		}
 		
@@ -233,19 +234,17 @@ public class Wizard extends Hero {
 			
 			procent = Percent.getPercent(100 + ROGUE_DRAIN_DMG_INCREASE , 20 + (level * PROCENT_INCREASE));
 			
-			int damage = (int) Math.round(Percent.getPercent(procent ,(int) Math.min(0.3 * r.maxHP, r.HP)));
-			
+			int damage = Math.round(Percent.getPercent(procent ,(float)Math.min(0.3 * r.maxHP, r.HP)));
 			
 			r.decreaseHP(damage); 
 			
 			int procent_without_race = 20 + (level * PROCENT_INCREASE);
-			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(int) Math.min(0.3 * r.maxHP, r.HP)));
+			
+			damage_done_this_fight =Math.round( Percent.getPercent(procent_without_race ,(float) Math.min(0.3 * r.maxHP, r.HP)));
 		
 		}
 		
 		return damage_done_this_fight; 
-		
-		
 		
 	}
 	
@@ -271,22 +270,26 @@ public class Wizard extends Hero {
 			
 			float damage_with_race_damage2 = Percent.getPercent(35 +(level * 2), damage2 + Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE , damage2));
 			
-			p.decreaseHP(Math.round(damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1)) +Math.round( Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1) + Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2;
+			
+			p.decreaseHP(Math.round(damage_total));
 			
 			damage_done_this_fight = 1;
 			
 		}
 		else if(!has_field_advantage){
 			
-			float damage_without_race_damage1 =Math.round( Percent.getPercent(damage_percent, damage1));
+			float damage_without_race_damage1 =Percent.getPercent(damage_percent, damage1);
 		
-			float damage_without_race_damage2 =Math.round( Percent.getPercent(damage_percent, damage2));
+			float damage_without_race_damage2 =Percent.getPercent(damage_percent, damage2);
 			
 			float damage_with_race_damage1  = Percent.getPercent (35 + (level *2 ),damage1 + Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE, damage1));
 			
 			float damage_with_race_damage2  = Percent.getPercent (35 + (level * 2) ,damage2 + Percent.getPercent(PYROMANCER_DEFLECT_DMG_INCREASE, damage2));
 			
-			p.decreaseHP(Math.round(damage_with_race_damage1 ) +Math.round(damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1  + damage_with_race_damage2 ;
+			
+			p.decreaseHP(Math.round(damage_total));
 			
 			
 			damage_done_this_fight = (int) (damage_without_race_damage1 + damage_with_race_damage2);
@@ -297,6 +300,8 @@ public class Wizard extends Hero {
 	}
 
 	public int deflect(Knight k , int field , float damage1 , float damage2){
+		
+
 		int damage_done_this_fight = 0;
 		int damage_percent = 0 ;
 		
@@ -316,22 +321,26 @@ public class Wizard extends Hero {
 			
 			float damage_with_race_damage2 = Percent.getPercent(35 +(level * 2), damage2 + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE , damage2));
 			
-			k.decreaseHP(Math.round(damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1)) +Math.round( Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1) + Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2;
+			
+			k.decreaseHP(Math.round(damage_total));
 			
 			damage_done_this_fight = 1;
 			
 		}
 		else if(!has_field_advantage){
 			
-			float damage_without_race_damage1 =Math.round( Percent.getPercent(damage_percent, damage1));
+			float damage_without_race_damage1 =Percent.getPercent(damage_percent, damage1);
 		
-			float damage_without_race_damage2 =Math.round( Percent.getPercent(damage_percent, damage2));
+			float damage_without_race_damage2 =Percent.getPercent(damage_percent, damage2);
 			
 			float damage_with_race_damage1  = Percent.getPercent (35 + (level *2 ),damage1 + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage1));
 			
 			float damage_with_race_damage2  = Percent.getPercent (35 + (level * 2) ,damage2 + Percent.getPercent(KNIGHT_DEFLECT_DMG_INCREASE, damage2));
 			
-			k.decreaseHP(Math.round(damage_with_race_damage1 ) +Math.round(damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1  + damage_with_race_damage2 ;
+			
+			k.decreaseHP(Math.round(damage_total));
 			
 			
 			damage_done_this_fight = (int) (damage_without_race_damage1 + damage_with_race_damage2);
@@ -339,8 +348,12 @@ public class Wizard extends Hero {
 		
 		return damage_done_this_fight;
 	}
+		
+	
 	
 	public int deflect(Wizard w , int field ,float damage1 , float damage2){
+		
+
 		int damage_done_this_fight = 0;
 		int damage_percent = 0 ;
 		
@@ -360,30 +373,32 @@ public class Wizard extends Hero {
 			
 			float damage_with_race_damage2 = Percent.getPercent(35 +(level * 2), damage2 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE , damage2));
 			
-			w.decreaseHP(Math.round(damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1)) +Math.round( Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1) + Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2;
+			
+			w.decreaseHP(Math.round(damage_total));
 			
 			damage_done_this_fight = 1;
 			
 		}
 		else if(!has_field_advantage){
 			
-			float damage_without_race_damage1 =Math.round( Percent.getPercent(damage_percent, damage1));
+			float damage_without_race_damage1 =Percent.getPercent(damage_percent, damage1);
 		
-			float damage_without_race_damage2 =Math.round( Percent.getPercent(damage_percent, damage2));
+			float damage_without_race_damage2 =Percent.getPercent(damage_percent, damage2);
 			
 			float damage_with_race_damage1  = Percent.getPercent (35 + (level *2 ),damage1 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE, damage1));
 			
 			float damage_with_race_damage2  = Percent.getPercent (35 + (level * 2) ,damage2 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE, damage2));
 			
-			w.decreaseHP(Math.round(damage_with_race_damage1 ) +Math.round(damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1  + damage_with_race_damage2 ;
+			
+			w.decreaseHP(Math.round(damage_total));
 			
 			
 			damage_done_this_fight = (int) (damage_without_race_damage1 + damage_with_race_damage2);
 		}
 		
 		return damage_done_this_fight;
-		
-		
 	}
 	
 	public int deflect(Rogue r ,int field ,float damage1 , float damage2){
@@ -407,23 +422,26 @@ public class Wizard extends Hero {
 			
 			float damage_with_race_damage2 = Percent.getPercent(35 +(level * 2), damage2 + Percent.getPercent(ROGUE_DEFLECT_DMG_INCREASE , damage2));
 			
-			r.decreaseHP(Math.round(damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1)) +Math.round( Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1) + Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2;
+			
+			r.decreaseHP(Math.round(damage_total));
 			
 			damage_done_this_fight = 1;
 			
 		}
 		else if(!has_field_advantage){
 			
-			float damage_without_race_damage1 =Math.round( Percent.getPercent(damage_percent, damage1));
+			float damage_without_race_damage1 =Percent.getPercent(damage_percent, damage1);
 		
-			float damage_without_race_damage2 =Math.round( Percent.getPercent(damage_percent, damage2));
+			float damage_without_race_damage2 =Percent.getPercent(damage_percent, damage2);
 			
 			float damage_with_race_damage1  = Percent.getPercent (35 + (level *2 ),damage1 + Percent.getPercent(ROGUE_DEFLECT_DMG_INCREASE, damage1));
 			
 			float damage_with_race_damage2  = Percent.getPercent (35 + (level * 2) ,damage2 + Percent.getPercent(ROGUE_DEFLECT_DMG_INCREASE, damage2));
 			
-			r.decreaseHP(Math.round(damage_with_race_damage1 ) +Math.round(damage_with_race_damage2));
+			float damage_total = damage_with_race_damage1  + damage_with_race_damage2 ;
 			
+			r.decreaseHP(Math.round(damage_total));
 			
 			damage_done_this_fight = (int) (damage_without_race_damage1 + damage_with_race_damage2);
 		}
