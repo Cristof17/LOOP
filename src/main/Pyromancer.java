@@ -1,7 +1,5 @@
 package main;
 
-//import Calculus.Percent;
-//import field.Field;
 
 public class Pyromancer extends Hero {
 

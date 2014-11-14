@@ -7,13 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-//import eroi.Hero;
-//import eroi.Knight;
-//import eroi.Pyromancer;
-//import eroi.Rogue;
-//import eroi.Wizard;
-//import field.Field;
-
 
 public class Main  {
 	
@@ -112,32 +105,12 @@ public class Main  {
 			e.printStackTrace();
 		}	
 
-		/*
-		 * 
-		 * Sa nu dau de 2 ori spell damage
-		 * Sa nu dau de 2 ori spell damage
-		 * Sa nu dau de 2 ori spell damage 
-		 * Sa nu dau de 2 ori spell damage
-		 * Sa nu dau de 2 ori spell damage
-		 * 
-		 * 
-		 */
-			
+	
 		
 //		System.out.println (Math.round( 500 - (0.35 * 1.3 *500)) -27);
 //		System.out.println(Math.round( 500 - Percent.getPercent (35 + (Percent.getPercent(30, 35)) ,500) - 27));
 		
-//		Rogue r = new Rogue();
-//		Knight p = new Knight();
-//		
-//		r.damages(p, Field.DESERT, 2);
-//		
-//		System.out.println("R "+ r.HP + " \nP "+p.HP);
-//		
-//		r.damages(p, Field.DESERT, 2);
-//		
-//		System.out.println("R "+ r.HP + " \nP "+p.HP);
-//		
+
 		/*
 		 * Create the map matrix
 		 */

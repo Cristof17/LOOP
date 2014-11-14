@@ -1,9 +1,6 @@
 package main;
 
 
-//import Calculus.Percent;
-//import field.Field;
-
 public class Wizard extends Hero {
 
 	public static final int HP_INCREMENT = 30;
