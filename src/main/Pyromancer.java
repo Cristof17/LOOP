@@ -1,8 +1,12 @@
 package main;
 
-
+/**
+ * 
+ * @author cristof
+ *
+ */
 public class Pyromancer extends Hero {
-
+	
 	public static final int HP_INCREMENT = 50;
 	
 	public static final int PYROMANCER_FIREBLAST_DMG_INCREASE = -10;
@@ -39,7 +43,10 @@ public class Pyromancer extends Hero {
 		h.isDamagedBy(this, field, round);
 	}
 	
-	
+	/**
+	 * @param p The Pyromancer with which the Pyromancer fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Pyromancer p , int field , int round ){
 		
 		this.fireblast(p, field);
@@ -49,7 +56,10 @@ public class Pyromancer extends Hero {
 		p.ignite(this, field);
 		
 	}
-	
+	/**
+	 * @param w The Wizard with which the Pyromancer fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Wizard w ,int field ,int round ){
 		
 		float dmg_fireblast = this.fireblast(w, field);
@@ -60,6 +70,10 @@ public class Pyromancer extends Hero {
 		
 	}
 	
+	/**
+	 * @param k The Knight with which the Pyromancer fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Knight k , int field ,int round ){
 		
 		this.fireblast(k, field);
@@ -70,6 +84,11 @@ public class Pyromancer extends Hero {
 		
 	}
 	
+	
+	/**
+	 * @param r The Rogue with which the Pyromancer fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Rogue r ,int field ,int round){
 		
 		this.fireblast(r, field);
@@ -80,6 +99,14 @@ public class Pyromancer extends Hero {
 		
 	}
 
+	
+	/**
+	 * This method applies Fireblast damage on the targeted Pyromancer
+	 * 
+	 * @param p The targeted Pyromancer
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Pyromancer
+	 */
 	public float fireblast(Pyromancer p ,int field){
 		
 		int damage_done_this_fight = 0;
@@ -118,6 +145,13 @@ public class Pyromancer extends Hero {
 		
 	}
 	
+	/**
+	 * This method applies Fireblast damage on the targeted Knight
+	 * 
+	 * @param k The targeted Knight
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Knight
+	 */
 	public float fireblast(Knight k ,int field){
 		int damage_done_this_fight = 0;
 		
@@ -154,6 +188,14 @@ public class Pyromancer extends Hero {
 			
 	}
 	
+	
+	/**
+	 * This method applies Fireblast damage on the targeted Wizard
+	 * 
+	 * @param w The targeted Wizard
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer on the targeted Wizard
+	 */
 	public float fireblast(Wizard w , int field){
 		
 		
@@ -193,6 +235,14 @@ public class Pyromancer extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Fireblast damage on the targeted Rogue
+	 * 
+	 * @param r The targeted Rogue
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Rogue
+	 */
 	public float fireblast(Rogue r ,int field){
 		
 		
@@ -231,6 +281,14 @@ public class Pyromancer extends Hero {
 	
 	}
 	
+	
+	/**
+	 * This method applies Ignite damage on the targeted Pyromancer
+	 * 
+	 * @param p The targeted Pyromancer
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Pyromancer
+	 */
 	public float ignite(Pyromancer p ,int field){
 		
 		has_field_advantage = checkField(field);
@@ -275,6 +333,14 @@ public class Pyromancer extends Hero {
 		
 	}
 
+	
+	/**
+	 * This method applies Ignite damage on the targeted Knight
+	 * 
+	 * @param k The targeted Knight
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Knight
+	 */
 	public float ignite(Knight k ,int field){
 		
 		has_field_advantage = checkField(field);
@@ -322,6 +388,14 @@ public class Pyromancer extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Ignite damage on the targeted Wizard
+	 * 
+	 * @param w The targeted Wizard
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Wizard
+	 */
 	public float ignite(Wizard w ,int field){
 	
 
@@ -370,6 +444,14 @@ public class Pyromancer extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Ignite damage on the targeted Rogue
+	 * 
+	 * @param r The targeted Rogue
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Pyromancer to the targeted Rogue
+	 */
 	public float ignite(Rogue r ,int field){
 		
 		
@@ -417,7 +499,13 @@ public class Pyromancer extends Hero {
 		
 	}
 	
-	
+	/**
+	 * This method checks weather the field on which the battle is 
+	 * being carried increases the Pyromancer's damage
+	 * 
+	 * @param field The field value to be tested
+	 * @return Return true if the Pyromancer is on it's specific field
+	 */
 	private boolean checkField(int field){
 		return field == Field.VOLCANIC;
 	}

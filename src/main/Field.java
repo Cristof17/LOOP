@@ -1,5 +1,10 @@
 package main;
 
+/**
+ * 
+ * @author cristof
+ *
+ */
 public class Field {
 
 	public static final int LAND = 0;

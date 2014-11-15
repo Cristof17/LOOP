@@ -1,6 +1,10 @@
 package main;
 
-
+/**
+ * 
+ * @author cristof
+ *
+ */
 public class Rogue extends Hero {
 
 	public static final int HP_INCREMENT = 40;
@@ -39,6 +43,10 @@ public class Rogue extends Hero {
 	}
 	
 	
+	/**
+	 * @param p The Pyromancer with which the Rogue fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Pyromancer p , int field , int round ){
 		
 		this.backstab(p, field);
@@ -48,6 +56,11 @@ public class Rogue extends Hero {
 		p.ignite(this, field);
 	}
 	
+	
+	/**
+	 * @param w The Wizard with which the Rogue fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Wizard w ,int field ,int round ){
 		
 		float dmg_backstab = this.backstab(w, field);
@@ -58,6 +71,11 @@ public class Rogue extends Hero {
 		
 	}
 	
+	
+	/**
+	 * @param k The Knight with which the Rogue fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Knight k , int field ,int round ){
 		
 		this.backstab(k, field);
@@ -67,6 +85,11 @@ public class Rogue extends Hero {
 		k.slam(this, field);
 	}
 	
+	
+	/**
+	 * @param r The Rogue with which the Rogue fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Rogue r ,int field ,int round){
 		
 		this.backstab(r, field);
@@ -78,7 +101,13 @@ public class Rogue extends Hero {
 	}
 
 	
-	
+	/**
+	 * This method applies Backstab damage on the targeted Pyromancer
+	 * 
+	 * @param p The targeted Pyromancer
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Rogue to the Pyromancer
+	 */
 	public float backstab(Pyromancer p , int field){
 		
 		float damage_done_this_fight = 0 ;
@@ -114,6 +143,14 @@ public class Rogue extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Backstab damage on the targeted Knight
+	 * 
+	 * @param k The targeted Knight
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Rogue to the Knight 
+	 */
 	public float backstab(Knight k , int field){
 	
 		float damage_done_this_fight = 0 ;
@@ -148,6 +185,14 @@ public class Rogue extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Backstab damage on the targeted Wizard
+	 * 
+	 * @param w The targeted Wizard
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Rogue to the Wizard
+	 */
 	public float backstab(Wizard w , int field){
 		
 		float damage_done_this_fight = 0 ;
@@ -182,6 +227,14 @@ public class Rogue extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Backstab damage on the targeted Rogue
+	 * 
+	 * @param r The targeted Rogue
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Rogue to the other Rogue
+	 */
 	public float backstab(Rogue r , int field ){
 		
 		float damage_done_this_fight = 0 ;
@@ -219,7 +272,13 @@ public class Rogue extends Hero {
 	
 	
 	
-	
+	/**
+	 * This method applies Paralysis damage on the targeted Pyromancer
+	 * 
+	 * @param p The targeted Pyromancer
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Rogue to the Pyromancer
+	 */
 	public float paralysis(Pyromancer p , int field){
 		
 		float damage_done_this_fight = 0 ;
@@ -252,6 +311,13 @@ public class Rogue extends Hero {
 		
 	}
 	
+	/**
+	 * This method applies Paralysis damage on the targeted Knight
+	 * 
+	 * @param k The targeted Knight
+	 * @param field The field where the spell is being casted
+	 * @return Damage done by the Rogue to the Knight
+	 */
 	public float paralysis(Knight k , int field){
 
 		float damage_done_this_fight = 0 ;
@@ -285,6 +351,14 @@ public class Rogue extends Hero {
 		
 	}
 
+	
+	/**
+	 * This method applies Paralysis damage on the targeted Wizard
+	 *  
+	 * @param w The targeted Wizard
+	 * @param field The field where the spell is being casted
+	 * @return Damage done by the Rogue to the targeted Wizard
+	 */
 	public float paralysis(Wizard w , int field){
 		
 		float damage_done_this_fight = 0 ;
@@ -318,6 +392,14 @@ public class Rogue extends Hero {
 		
 	}
 
+	
+	/**
+	 * This method applies Paralysis damage on the targeted Rogue
+	 * 
+	 * @param r The targeted Rogue
+	 * @param field The field where the spell is being casted
+	 * @return Damage done by the Rogue to the other Rogue
+	 */
 	public float paralysis(Rogue r , int field){
 		
 		float damage_done_this_fight = 0 ;
@@ -350,6 +432,14 @@ public class Rogue extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method checks weather the field on which the battle is 
+	 * being carried increases the Rogue's damage
+	 * 
+	 * @param field The field value to be tested
+	 * @return Returns true if the Rogue is on it's specific field
+	 */
 	private boolean checkField(int field){
 		return field == Field.WOODS;
 	}

@@ -1,6 +1,10 @@
 package main;
 
-
+/**
+ * 
+ * @author cristof
+ *
+ */
 public class Wizard extends Hero {
 
 	public static final int HP_INCREMENT = 30;
@@ -50,6 +54,10 @@ public class Wizard extends Hero {
 		
 	}
 	
+	/**
+	 * @param w The Wizard with which the Wizard fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Wizard w ,int field ,int round ){
 		
 		this.drain(w, field);
@@ -57,6 +65,10 @@ public class Wizard extends Hero {
 		
 	}
 	
+	/**
+	 * @param k The Knight with which the Wizard fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Knight k , int field ,int round ){
 		
 		int damage_taken_by_execute = k.execute(this, field);
@@ -69,6 +81,10 @@ public class Wizard extends Hero {
 		
 	}
 	
+	/**
+	 * @param r The Rogue with which the Wizard fights 
+	 * @param field The field where the fight is being taken 
+	 */
 	public void isDamagedBy(Rogue r ,int field ,int round){
 		
 		float damage_taken_by_backstab = r.backstab(this, field);
@@ -79,7 +95,13 @@ public class Wizard extends Hero {
 		
 	}
 
-	
+	/**
+	 * This method applies Drain damage on the targeted Pyromancer
+	 * 
+	 * @param p
+	 * @param field
+	 * @return Damage done by the Wizard to the targeted Pyromancer
+	 */
 	public float drain(Pyromancer p , int field){
 	
 		int damage_done_this_fight = 0; 
@@ -122,6 +144,14 @@ public class Wizard extends Hero {
 		
 	}
 	
+	
+	/**
+	 * This method applies Drain damage on the targeted Knight
+	 * 
+	 * @param k The targeted Knight
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Wizard on the targeted Knight
+	 */
 	public float drain(Knight k , int field){
 		
 		int damage_done_this_fight = 0; 
@@ -163,6 +193,14 @@ public class Wizard extends Hero {
 		
 	}	
 	
+	
+	/**
+	 * This method applies Drain damage on the targeted Wizard
+	 * 
+	 * @param w The targeted Wizard
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Wizard to the targeted Wizard
+	 */
 	public float drain(Wizard w , int field){
 	
 		
@@ -207,6 +245,13 @@ public class Wizard extends Hero {
 	}
 	
 	
+	/**
+	 * This method applies Drain damage on the targeted Rogue
+	 * 
+	 * @param r The targeted Rogue
+	 * @param field The field where the spell is being cast
+	 * @return Damage done by the Wizard to the targeted Rogue
+	 */
 	public float drain(Rogue r , int field){
 		
 		int damage_done_this_fight = 0; 
@@ -249,7 +294,15 @@ public class Wizard extends Hero {
 		
 	}
 	
-	
+	/**
+	 * This method applies Deflect damage on the targeted Pyromancer
+	 * 
+	 * @param p The targeted Pyromancer
+	 * @param field The field where the spell is being cast
+	 * @param damage1 Damage done by the Fireblast spell of the Pyromancer 
+	 * @param damage2 Damage done by the Ignite spell of the Pyromancer
+	 * @return Damage done by the Wizard to the targeted Pyromancer
+	 */
 	public float deflect(Pyromancer p ,int field ,float damage1 , float damage2){
 		
 		int damage_done_this_fight = 0;
@@ -298,6 +351,15 @@ public class Wizard extends Hero {
 		
 	}
 
+	/**
+	 * This method applies Deflect damage on the targeted Knight
+	 * 
+	 * @param k The targeted Knight
+	 * @param field The field where the spell is being cast
+	 * @param damage1 Damage done by the Execute spell of the Knight
+	 * @param damage2 Damage done by the Slam spell of the Knight
+	 * @return Damage done by the Wizard to the targeted Knight
+	 */
 	public int deflect(Knight k , int field , float damage1 , float damage2){
 		
 		int damage_done_this_fight = 0;
@@ -345,55 +407,15 @@ public class Wizard extends Hero {
 		return damage_done_this_fight;
 	}
 	
-	public int deflect(Wizard w , int field ,float damage1 , float damage2){
-	
-		int damage_done_this_fight = 0;
-		int damage_percent = 0 ;
-		
-		if(35 + (level * 2) > 70){
-			damage_percent = 70;
-		}else{
-			damage_percent = 35 + (level * 2);
-		}
-		
-		has_field_advantage = checkField(field);
-		
-		if(has_field_advantage){
-			
-
-			
-			float damage_with_race_damage1 = Percent.getPercent(35 + (level * 2),damage1 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE , damage1)); 
-			
-			float damage_with_race_damage2 = Percent.getPercent(35 +(level * 2), damage2 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE , damage2));
-			
-			float damage_total = damage_with_race_damage1 + Percent.getPercent(FIELD_DAMAGE_INCREASE, damage_with_race_damage1) + Percent.getPercent(FIELD_DAMAGE_INCREASE,  damage_with_race_damage2)+damage_with_race_damage2; 
-			
-			w.decreaseHP(Math.round(damage_total));
-			
-			damage_done_this_fight = 1;
-			
-		}
-		else if(!has_field_advantage){
-			
-			float damage_without_race_damage1 =Math.round( Percent.getPercent(damage_percent, damage1));
-		
-			float damage_without_race_damage2 =Math.round( Percent.getPercent(damage_percent, damage2));
-			
-			float damage_with_race_damage1  = Percent.getPercent (35 + (level *2 ),damage1 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE, damage1));
-			
-			float damage_with_race_damage2  = Percent.getPercent (35 + (level * 2) ,damage2 + Percent.getPercent(WIZARD_DEFLECT_DMG_INCREASE, damage2));
-			
-			w.decreaseHP(Math.round(damage_with_race_damage1 + damage_with_race_damage2));
-			
-			
-			damage_done_this_fight = (int) (damage_without_race_damage1 + damage_with_race_damage2);
-		}
-		
-		return damage_done_this_fight;
-		
-		
-	}
-	
+	/**
+	 * This method applies Deflect damage on the targeted Rogue
+	 * 
+	 * @param r The targeted Rogue
+	 * @param field The field where the spell is being cast
+	 * @param damage1 Damage done by the Backstab spell of the Rogue
+	 * @param damage2 Damage done by the Paralysis spell of the Rogue
+	 * @return Damage done by the Wizard to the targeted Rogue
+	 */
 	public int deflect(Rogue r ,int field ,float damage1 , float damage2){
 		
 		int damage_done_this_fight = 0;
@@ -441,6 +463,14 @@ public class Wizard extends Hero {
 		return damage_done_this_fight;
 	}
 	
+	
+	/**
+	 * This method checks weather the field on which the battle is 
+	 * being carried increases the Wizard's damage
+	 * 
+	 * @param field The field value to be tested
+	 * @return Returns true if the Wizard is on it's specific field
+	 */
 	private boolean checkField(int field){
 		return field == Field.DESERT;
 	}

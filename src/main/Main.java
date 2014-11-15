@@ -35,9 +35,8 @@ public class Main  {
 	@SuppressWarnings("deprecation")
 	public static void main(String args[]){
 		
-		/**
-		 * Initializari fisiere de intrare si de iesire
-		 * functie de parametrii din linie de comanda
+		/*
+		 * Initializing streams based on the file names given as arguments
 		 */
 		try {
 
@@ -49,12 +48,17 @@ public class Main  {
 
 			tokenizer = new StreamTokenizer(buff_in);
 			
-			
+			/*
+			 * x and y ar the sizes of the field
+			 */
 			int current = tokenizer.nextToken();
 			x = (int)tokenizer.nval ;
 			tokenizer.nextToken();
 			y = (int)tokenizer.nval;
 			
+			/*
+			 * map_init is the matrix where the initials of the field are being stored
+			 */
 			map = new int[x][y];
 			map_init = new char[x][y];
 
@@ -76,7 +80,10 @@ public class Main  {
 			y_pos_init = new int[numberOfCharacters];
 			heros = new Hero[numberOfCharacters];
 			
-			
+			/*
+			 * extracting data about the factions of the characters 
+			 * and their initial x and y coordinates
+			 */
 			for(int j = 0 ; j < numberOfCharacters ; j++){
 				faction[j] = tokenizer.sval.charAt(0);
 				tokenizer.nextToken();
@@ -87,7 +94,11 @@ public class Main  {
 				
 			}
 			
-			
+			/*
+			 * retrieving the number of rounds
+			 * and also the moves which each character has to 
+			 * make at every round
+			 */
 			numberOfRounds = (int)tokenizer.nval;
 			moves_map = new char[numberOfRounds][numberOfCharacters];
 			tokenizer.nextToken();
@@ -106,13 +117,8 @@ public class Main  {
 		}	
 
 	
-		
-//		System.out.println (Math.round( 500 - (0.35 * 1.3 *500)) -27);
-//		System.out.println(Math.round( 500 - Percent.getPercent (35 + (Percent.getPercent(30, 35)) ,500) - 27));
-		
-
 		/*
-		 * Create the map matrix
+		 * Create the map matrix which 
 		 */
 		for(int i = 0 ; i < x ; i++){
 			for(int j = 0 ; j < y ; j++){
@@ -128,9 +134,9 @@ public class Main  {
 		}
 		
 		/*
-		 * Instantiate the heros vector
+		 * Instantiate each hero in the heros array and
+		 * assigning it it's position
 		 */
-		
 		for(int i = 0 ; i < numberOfCharacters ; i++){
 			if(faction[i] == 'P'){
 				
@@ -159,10 +165,15 @@ public class Main  {
 		}
 		
 		
-		
+		/*
+		 * The core of the game . 
+		 */
 		for(int i = 0 ; i < numberOfRounds ; i++){
 			for(int j = 0 ; j < numberOfCharacters ; j++){
 				
+				/*
+				 * Heros take DOT 
+				 */
 				heros[j].takeDamageOverTime();
 				
 			}
@@ -172,6 +183,12 @@ public class Main  {
 				if(heros[j].isDead())
 					continue ;
 				
+				/*
+				 * If the hero is incapacitated then
+				 * insert into the hero's column on the
+				 * round's line in the move matrix '_'
+				 * which means that he cannot move this round
+				 */
 				if(heros[j].isIncapacitated())
 					moves_map[i][j] = '_';
 				
@@ -202,6 +219,7 @@ public class Main  {
 				}
 			}
 			
+			
 			/*
 			 * Fight fight fight fight fight fight fight
 			 */
@@ -225,7 +243,9 @@ public class Main  {
 		}
 		
 		
-		
+		/*
+		 * Outputting each hero's stats 
+		 */
 		for(int j = 0 ; j < numberOfCharacters ; j++){
 			StringBuilder builder = new StringBuilder();
 			if (!heros[j].isDead()) {
@@ -264,6 +284,10 @@ public class Main  {
 			e1.printStackTrace();
 		}
 		
+		
+		/*
+		 * Closing the streams that were opened to read from files
+		 */
 		try {
 			
 			buff_out.flush();
@@ -273,7 +297,6 @@ public class Main  {
 			out.close();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
