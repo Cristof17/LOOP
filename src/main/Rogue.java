@@ -95,8 +95,8 @@ public class Rogue extends Hero {
 		this.backstab(r, field);
 		this.paralysis(r, field);
 		
-		r.backstab(r, field);
-		r.paralysis(r, field);
+		r.backstab(this, field);
+		r.paralysis(this, field);
 		
 	}
 
